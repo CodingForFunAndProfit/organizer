@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$numberone-light-primary: mat-palette($mat-blue-grey);
+$numberone-light-accent: mat-palette($mat-green, A200, A100, A400);
+$numberone-light-warn: mat-palette($mat-deep-orange);
+
+$numberone-light-theme: mat-light-theme(
+  $numberone-light-primary,
+  $numberone-light-accent,
+  $numberone-light-warn
+);
+
+$numberone-dark-primary: mat-palette($mat-blue-grey);
+$numberone-dark-accent: mat-palette($mat-green, A200, A100, A400);
+$numberone-dark-warn: mat-palette($mat-deep-orange);
+
+$numberone-dark-theme: mat-dark-theme(
+  $numberone-dark-primary,
+  $numberone-dark-accent,
+  $numberone-dark-warn
+);
