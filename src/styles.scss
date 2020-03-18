@@ -4,6 +4,7 @@
 
 @mixin custom-components-theme($theme) {
     @include sidenavigation-component-theme($theme);
+    @include form-theme($theme);
 }
 .numberone-dark {
     @include angular-material-theme($numberone-dark-theme);

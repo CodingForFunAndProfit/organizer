@@ -2,28 +2,30 @@
 
 // mixin name will be used in main style.scss
 @mixin sidenavigation-component-theme($theme) {
-  // retrieve variables from theme
-  // (all possible variables, use only what you really need)
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, accent);
-  $foreground: map-get($theme, foreground);
-  $background: map-get($theme, background);
+    // retrieve variables from theme
+    // (all possible variables, use only what you really need)
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, accent);
+    $foreground: map-get($theme, foreground);
+    $background: map-get($theme, background);
 
-  // all of these variables contain many additional variables
+    // all of these variables contain many additional variables
 
-  .mat-nav-list a {
-    &.active-link {
-      color: mat-color($accent);
+    .mat-nav-list a {
+        &.active-link {
+            color: mat-color($accent);
+        }
+        /*
+        &:hover {
+             color: mat-color($primary);
+        }
+        */
     }
-    &:hover {
-      color: mat-color($primary);
+    .mat-nav-list .mat-icon {
+        margin-right: 10px;
     }
-  }
-  .mat-nav-list .mat-icon {
-    margin-right: 10px;
-  }
-  /*
+    /*
   big-input {
 
     input {

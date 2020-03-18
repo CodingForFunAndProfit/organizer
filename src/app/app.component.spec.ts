@@ -2,11 +2,25 @@ import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material/material.module';
+
+import { ProgressComponent } from './components/progress/progress.component';
+import { SidenavigationComponent } from './shared/common/sidenavigation/sidenavigation.component';
+
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [RouterTestingModule],
-            declarations: [AppComponent],
+            imports: [
+                RouterTestingModule,
+                BrowserAnimationsModule,
+                MaterialModule,
+            ],
+            declarations: [
+                AppComponent,
+                ProgressComponent,
+                SidenavigationComponent,
+            ],
         }).compileComponents();
     }));
 
@@ -22,12 +36,12 @@ describe('AppComponent', () => {
         expect(app.title).toEqual('Organizer');
     });
 
-    /*
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('Organizer app is running!');
-  });
-  */
+    it('should render title', () => {
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+        const compiled = fixture.nativeElement;
+        expect(
+            compiled.querySelector('mat-toolbar span.title').textContent
+        ).toContain('Organizer');
+    });
 });

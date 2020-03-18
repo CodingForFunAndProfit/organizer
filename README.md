@@ -1,33 +1,26 @@
 # Organizer
 
-ng new Organizer
+## Client
 
--   routing
--   scss
+-   pages (home, tasks, settings)
+-   services (settings, tasks)
+-   angular material + flex layout
 
-ng add @angular/material
+Settings:
 
-ng generate m shared/material
+-   default settings file
+-   read and write it to localStorage
+-   change settings in localstorage
+-   todo: write these preferences to table as named config (reuse on new devices, or have config for mobile and for desktop, or just different views)
 
-problem:
-@angular/material/index.d.ts' is not a module.
+## TODOS:
 
-found: Components can no longer be imported through "@angular/material".
-Use the individual secondary entry-points, such as @angular/material/button.
+-   Registration / Login Pages
+-   Website / Landingpage -> different layouts
 
-problem: vscode & prettier autoformat singlequotes -> typescript error
-solution: prettierrc
+## Links
 
-npm install --save-dev rimraf
-and buildscripts:
-"scripts": {
-"clean": "rimraf ./dist",
-"ng": "ng",
-"start": "ng serve",
-"build": "ng build",
-"build:prod": "ng build --prod",
-"test": "ng test",
-"lint": "ng lint",
-"e2e": "ng e2e",
-"build:ci": "npm run clean && npm run test && npm run build:prod"
-},
+-   [Mastering Markdown](https://guides.github.com/features/mastering-markdown)
+-   [JWT: The Complete Guide to JSON Web Tokens](https://blog.angular-university.io/angular-jwt/)
+-   [Angular Docs](https://angular.io/docs)
+-   [Angular Material](https://material.angular.io)
