@@ -37,3 +37,13 @@ body {
 .container {
     padding: 15px 35px;
 }
+.mat-sidenav-container {
+    height: calc(100% - 64px);
+}
+.mat-sidenav {
+    min-width: 150px;
+}
+.mat-sidenav h2 {
+    margin-left: 15px;
+    margin-top: 15px;
+}

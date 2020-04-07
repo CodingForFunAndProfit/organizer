@@ -23,6 +23,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ProgressComponent } from './components/progress/progress.component';
 import { RequestLoaderService } from './services/request-loader.service';
 import { RequestInterceptor } from './interceptors/request.interceptor';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
     declarations: [
@@ -34,6 +35,7 @@ import { RequestInterceptor } from './interceptors/request.interceptor';
         LoginComponent,
         LoadingComponent,
         ProgressComponent,
+        UsersComponent,
     ],
     imports: [
         BrowserModule,
