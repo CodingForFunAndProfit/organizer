@@ -5,7 +5,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { UsersService } from 'src/app/services/users.service';
 import { Observable } from 'rxjs';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
@@ -15,28 +15,49 @@ import { MatSort } from '@angular/material/sort';
     providers: [UsersService],
 })
 export class UsersComponent implements OnInit {
-    users: User[];
-    displayedColumns: string[] = ['id', 'email'];
-    dataSource: MatTableDataSource<User>;
+    users: Observable<User[]>;
+    usersold: User[];
+    displayedColumns: string[] = ['id', 'email', 'controls'];
+    // dataSource: MatTableDataSource<User>;
+    dataSource: UserDataSource;
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
+    @ViewChild(MatTable) table: MatTable<User[]>;
 
     constructor(private usersService: UsersService) {
-        this.usersService.users.subscribe((users) => {
+        /*
+        this.usersService.usersold.subscribe((users) => {
             this.dataSource = new MatTableDataSource<User>(users);
             this.dataSource.paginator = this.paginator;
             this.dataSource.sort = this.sort;
         });
+        */
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.users = this.usersService.users;
+        this.usersService.getAll();
+
+        this.dataSource = new UserDataSource(this.usersService);
+        // this.dataSource.paginator = this.paginator;
+        // this.dataSource.sort = this.sort;
+        /*
+        this.dataSource = new MatTableDataSource<Observable<User[]>>(
+            this.users
+        );
+        this.dataSource.data = this.users;
+        
+        */
+    }
 
     deleteUser(user: User) {
         console.log('deleteing user: ' + user.id);
+        this.usersService.delete(user.id);
+        this.table.renderRows();
     }
 }
 
-export class UserTableDataSource extends DataSource<any> {
+export class UserDataSource extends DataSource<any> {
     constructor(private usersService: UsersService) {
         super();
     }

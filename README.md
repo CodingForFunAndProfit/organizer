@@ -27,6 +27,14 @@ Settings:
 -   [Angular Material](https://material.angular.io)
 -   [Testing Apollo in Angular](https://www.apollographql.com/docs/angular/guides/testing/)
 -   [THe ultimate guide to handle JWTs on frontend clients (GraphQL)](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
+-   [BEM - Block Element Modifier](http://getbem.com)
+-   [Angular Material Data Table](https://blog.angular-university.io/angular-material-data-table/)
+-   [Angular Observable Data Services](https://coryrylan.com/blog/angular-observable-data-services)
+-   [PlantUML](http://www.plantuml.com/plantuml/)
+-   [C4 Modelling little bit easier - draw.io](https://tobiashochguertel.github.io/c4-draw.io/)
+-   [C4-PlantUML - VScode](https://github.com/RicardoNiepel/C4-PlantUML)
+-   [](https://structurizr.com/workspace/48635)
+-   [C4 Model](https://c4model.com)
 
 https://medium.com/hackernoon/the-best-way-to-securely-manage-user-sessions-91f27eeef460
 https://medium.com/@ideneal/securing-authentication-in-a-spa-using-jwt-token-the-coolest-way-ab883bc372b6
