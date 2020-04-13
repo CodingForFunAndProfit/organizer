@@ -10,9 +10,26 @@
             <input type="text" [(ngModel)]="newName" placeholder="new name"/>
             <button (click)="updateName()">update name</button>
         </div>
+
+        <mat-paginator *ngIf="data.page$ | async as page"
+  [length]="page.totalElements" [pageSize]="page.size"
+  [pageIndex]="page.number" [hidePageSize]="true" 
+  (page)="data.fetch($event.pageIndex)">
+</mat-paginator>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
 -->
- <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
-        <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <mat-paginator *ngIf="tableSource.page$ | async as page"
+            [length]="page.totalElements"
+            [pageSize]="page.size" 
+            [pageIndex]="page.number"
+            (page)="tableSource.fetch($event.pageIndex)"
+            [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
+        </mat-paginator>
+        <table  mat-table [dataSource]="tableSource" 
+                matSort matSortActive="email" matSortDirection="asc" (matSortChange)="sortData($event)" 
+                matSortDisableClear="true"
+                class="mat-elevation-z8">
             
             <ng-container matColumnDef="email">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>

@@ -9,6 +9,8 @@ import { MatSort } from '@angular/material/sort';
 
 import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { PaginatedDataSource } from 'src/app/shared/paginated.datasource';
+import { Sort } from 'src/app/shared/pagination';
 
 const deleteUserMutation = gql`
     mutation deleteUser($id: String!) {
@@ -54,20 +56,33 @@ export class UsersComponent implements OnInit, AfterViewInit {
     displayedColumns: string[] = ['id', 'email', 'controls'];
     dataSource: UserDataSource;
 
+    tableSource = new PaginatedDataSource<User>(
+        (request) => this.usersService.page(request),
+        { property: 'email', order: 'asc' }
+    );
+
     @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
     @ViewChild(MatTable) table: MatTable<User[]>;
 
     constructor(private apollo: Apollo, private usersService: UsersService) {}
 
+    sortData(event: any) {
+        console.log(event);
+        const sortby: Sort<User> = {
+            property: event.active,
+            order: event.direction,
+        };
+        this.tableSource.sortBy(sortby);
+    }
     ngOnInit() {
+        // this.tableSource.sortBy(this.sort);
         /*
         this.usersService.users.subscribe((users) => {
             this.users = users;
         });
         */
         // this.users = this.usersService.users;
-
         /*
         this.query = this.apollo.watchQuery<GetMe>({
             query: getUsersQuery,
@@ -101,14 +116,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
                 this.users = result.data.users;
             });
             */
-        this.dataSource = new UserDataSource(this.usersService);
-        this.dataSource.sort = this.sort;
+        // this.dataSource = new UserDataSource(this.usersService);
+        // this.dataSource.sort = this.sort;
         // this.dataSource.paginator = this.paginator;
-        this.usersService.getUsers();
+        // this.usersService.getUsers(10, 0);
     }
 
     ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+        // this.dataSource.paginator = this.paginator;
     }
 
     updateName() {
@@ -180,9 +195,11 @@ export class UserDataSource extends DataSource<any> {
         );
     }
     connect(): Observable<User[]> {
-        return this.usersService.users;
+        return this.dataSubject.asObservable();
     }
-    disconnect() {}
+    disconnect() {
+        this.dataSubject.complete();
+    }
 
     /*
     public setSort(sort: MatSort) {
