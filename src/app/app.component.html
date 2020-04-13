@@ -1,16 +1,1 @@
-<mat-sidenav-container>
-    <mat-sidenav #sidenav>
-        <app-sidenavigation></app-sidenavigation>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <button mat-button (click)="sidenav.toggle()"><mat-icon aria-hidden="false" aria-label="Menu">menu</mat-icon></button>
-            <span class="fill"></span>
-            <button mat-icon-button (click)="toggleTheme()"><mat-icon>wb_sunny</mat-icon></button>
-        </mat-toolbar>
-        <div class="content">
-            <router-outlet></router-outlet>
-        </div>
-        
-    </mat-sidenav-content>
-</mat-sidenav-container>
+<router-outlet></router-outlet>

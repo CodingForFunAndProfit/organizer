@@ -1,6 +1,8 @@
 import { Component, HostBinding } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { SettingsService } from './services/settings.service';
+import { AuthService } from './services/auth.service';
+import { User } from './entities/user/user.entity';
 
 @Component({
     selector: 'app-root',
@@ -14,20 +16,24 @@ export class AppComponent {
 
     private theme: string;
     private dark: boolean;
+    user: User;
 
     constructor(
         public overlayContainer: OverlayContainer,
-        private settings: SettingsService
+        private settings: SettingsService,
+        private authService: AuthService
     ) {
-        this.settings.theme.subscribe(theme => {
+        this.settings.theme.subscribe((theme) => {
             this.theme = theme;
             this.changeClass();
         });
 
-        this.settings.dark.subscribe(dark => {
+        this.settings.dark.subscribe((dark) => {
             this.dark = dark;
             this.changeClass();
         });
+
+        this.authService.currentUser.subscribe((user) => (this.user = user));
     }
     toggleTheme() {
         this.settings.changeLight(!this.dark);
@@ -40,5 +46,8 @@ export class AppComponent {
             .classList.remove(this.activeThemeCssClass);
         this.overlayContainer.getContainerElement().classList.add(themeClass);
         this.activeThemeCssClass = themeClass;
+    }
+    logoutUser() {
+        this.authService.logout();
     }
 }

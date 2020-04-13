@@ -1,27 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material/material.module';
-import { SidenavigationComponent } from './shared/common/sidenavigation/sidenavigation.component';
 
+import { MaterialModule } from './shared/material/material.module';
+import { GraphqlModule } from './modules/graphql/graphql.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HomeComponent } from './pages/home/home.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
+
+import { RequestLoaderService } from './services/request-loader.service';
+import { RequestInterceptor } from './interceptors/request.interceptor';
+
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
-    declarations: [AppComponent, SidenavigationComponent, HomeComponent, SettingsComponent, TasksComponent],
+    declarations: [AppComponent, LoadingComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule,
+        HttpClientModule,
         FlexLayoutModule,
+        GraphqlModule,
     ],
-    providers: [],
+    providers: [
+        RequestLoaderService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: RequestInterceptor,
+            multi: true,
+        },
+    ],
     bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}
