@@ -27,7 +27,7 @@ export class SettingsService {
 
     public changeLight(dark: boolean) {
         this._dark.next(dark);
-        // localStorage.setItem('dark', `${dark}`);
+        localStorage.setItem('dark', `${dark}`);
     }
 
     public changeTheme(theme: string) {

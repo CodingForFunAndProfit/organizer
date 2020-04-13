@@ -1,44 +1,49 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
+import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { User } from '../entities/user/user.entity';
 
-const loginMutation = gql`
-    mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password) {
+const meQuery = gql`
+    query {
+        me {
             id
             email
-            name
         }
     }
 `;
 
-interface LoginData {
-    email: string;
-    password: string;
+interface GetMe {
+    me: User;
 }
-
 @Injectable({
     providedIn: 'root',
 })
 export class UserService {
+    userId: string;
+    token: string;
+    private query: QueryRef<any>;
     constructor(private apollo: Apollo) {}
 
-    public login(email: string, password: string) {
-        this.apollo
-            .mutate({
-                mutation: loginMutation,
-                variables: {
-                    email: 'me@seelentripper.de',
-                    password: 'password',
-                },
-            })
-            .subscribe(
-                data => {
-                    console.log('got data', data);
-                },
-                error => {
-                    console.log('there was an error', error);
-                }
-            );
+    setToken(token: string) {
+        this.token = token;
+        localStorage.setItem('token', token);
+        this.getUser();
+    }
+
+    getUser() {
+        this.query = this.apollo.watchQuery<GetMe>({
+            query: meQuery,
+        });
+
+        this.query.valueChanges.subscribe(
+            (result) => {
+                console.log(result);
+                // this.users = result.data && result.data.users;
+                this.userId = result.data && result.data.me.id;
+            },
+            (error) => {
+                console.log('there was an error', error);
+            }
+        );
     }
 }

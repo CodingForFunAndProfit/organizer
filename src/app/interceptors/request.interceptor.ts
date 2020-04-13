@@ -18,6 +18,7 @@ export class RequestInterceptor implements HttpInterceptor {
         request: HttpRequest<unknown>,
         next: HttpHandler
     ): Observable<HttpEvent<unknown>> {
+        // console.log('Authorization:', request.headers.get('Authorization'));
         this.requestLoaderService.show();
         return next
             .handle(request)

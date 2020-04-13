@@ -5,15 +5,13 @@
     <mat-divider></mat-divider>
     <mat-card-content>
     <!--
-        <mat-list>
-            <mat-list-item *ngFor="let user of users | async" >
-                <div >{{user.id}}</div>
-                <div >{{user.email}}</div>
-                <mat-icon aria-hidden="false" aria-label="Delete user" (click)="deleteUser(user)">delete</mat-icon>
-            </mat-list-item>
-        </mat-list>
+        <div *ngIf="me">
+            <h2>Hello {{me.email}}</h2>
+            <input type="text" [(ngModel)]="newName" placeholder="new name"/>
+            <button (click)="updateName()">update name</button>
+        </div>
 -->
-        <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+ <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
         <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
             
             <ng-container matColumnDef="email">
@@ -35,6 +33,16 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             
         </table>
+<!--
+        <mat-list>
+            <mat-list-item *ngFor="let user of users " >
+                <div >{{user.id}}</div>
+                <div >{{user.email}}</div>
+                <mat-icon aria-hidden="false" aria-label="Delete user" (click)="deleteUser(user)">delete</mat-icon>
+            </mat-list-item>
+        </mat-list>
+-->
+       
       
     </mat-card-content>
 </mat-card>

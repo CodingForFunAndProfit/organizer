@@ -14,7 +14,7 @@ export class ActionsComponent implements OnInit {
     newAction: Action;
     constructor(private actionService: ActionsService) {
         this.actionService.actionsObs.subscribe(
-            actionsObs => (this.actions = actionsObs)
+            (actionsObs) => (this.actions = actionsObs)
         );
         this.newAction = new Action();
     }

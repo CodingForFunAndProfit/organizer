@@ -1,17 +1,15 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { User } from 'src/app/entities/user/user.entity';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { SettingsService } from './services/settings.service';
-import { AuthService } from './services/auth.service';
-import { User } from './entities/user/user.entity';
+import { SettingsService } from 'src/app/services/settings.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    selector: 'app-mainlayout',
+    templateUrl: './mainlayout.component.html',
+    styleUrls: ['./mainlayout.component.scss'],
 })
-export class AppComponent {
-    title = 'Organizer';
-
+export class MainlayoutComponent implements OnInit {
     @HostBinding('class') activeThemeCssClass: string;
 
     private theme: string;
@@ -35,6 +33,9 @@ export class AppComponent {
 
         this.authService.currentUser.subscribe((user) => (this.user = user));
     }
+
+    ngOnInit(): void {}
+
     toggleTheme() {
         this.settings.changeLight(!this.dark);
     }

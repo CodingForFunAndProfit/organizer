@@ -18,6 +18,7 @@ Settings:
 -   Registration / Login Pages
 -   Website / Landingpage -> different layouts
 -   cheatsheets by tags (i.e. heroku: lists alls commands with quick explanation and link to documentation)
+-   a mock graphql api saas
 
 ## Links
 

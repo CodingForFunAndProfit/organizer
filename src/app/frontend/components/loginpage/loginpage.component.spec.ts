@@ -1,24 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-    ApolloTestingModule,
-    ApolloTestingController,
-} from 'apollo-angular/testing';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { LoginpageComponent } from './loginpage.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/app/shared/material/material.module';
-
-import { LoginComponent } from './login.component';
+import { ApolloTestingModule } from 'apollo-angular/testing';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
-describe('LoginComponent', () => {
-    let component: LoginComponent;
-    let fixture: ComponentFixture<LoginComponent>;
+describe('LoginpageComponent', () => {
+    let component: LoginpageComponent;
+    let fixture: ComponentFixture<LoginpageComponent>;
     let service: UserService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [LoginComponent],
+            declarations: [LoginpageComponent],
             imports: [
                 BrowserAnimationsModule,
                 MaterialModule,
@@ -31,7 +27,7 @@ describe('LoginComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LoginComponent);
+        fixture = TestBed.createComponent(LoginpageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
