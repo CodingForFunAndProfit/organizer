@@ -1,5 +1,7 @@
 # Organizer
 
+[![build status](https://github.com/CodingForFunAndProfit/Organizer/workflows/buildanddeploy/badge.svg)](https://github.com/CodingForFunAndProfit/Organizer/actions)
+
 -   angular, material, apollo, jwt authentication
 
 ## TODOS
