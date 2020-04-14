@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
+import { Apollo, QueryRef } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { User } from '../entities/user/user.entity';
 import { PageRequest, Page } from '../shared/pagination';
-// import { map } from 'rxjs/operators';
 
 const getUsersQuery = gql`
     query getUsers($input: PagingInput!, $sortby: SortByInput!) {
@@ -27,83 +26,102 @@ interface PagedUsersResponse {
         total: number;
     };
 }
+const deleteUserMutation = gql`
+    mutation deleteUser($id: String!) {
+        deleteUser(id: $id)
+    }
+`;
 
+const getUserQuery = gql`
+    query getUser($id: String!) {
+        user(id: $id) {
+            id
+            email
+        }
+    }
+`;
+const updateUserMutation = gql`
+    mutation updateUser($id: String!, $input: UserInput!) {
+        updateUser(id: $id, input: $input)
+    }
+`;
+interface GetUserRes {
+    user: User;
+}
+interface GetMe {
+    me: User;
+}
 @Injectable({
     providedIn: 'root',
 })
 export class UsersService {
-    private _users = new BehaviorSubject<User[]>([]);
-
     private defaultPage = 0;
-    private defaultPageSize = 20;
+    private defaultPageSize = 10;
     defaultpage = {
         content: [],
         number: this.defaultPage,
         size: this.defaultPageSize,
         totalElements: 100,
     };
-    private _userPage = new BehaviorSubject<Page<User>>(this.defaultpage);
-    userPage: Observable<Page<User>>;
+
+    private pagedUserQueryRef: QueryRef<PagedUsersResponse>;
+    private _pagedUsers = new BehaviorSubject<Page<User>>(this.defaultpage);
+
     constructor(private apollo: Apollo) {}
 
-    get usersPage() {
-        return this._userPage.asObservable();
-    }
-    get users() {
-        return this._users.asObservable();
+    page(pageRequest: PageRequest<User>): Observable<Page<User>> {
+        this.createpagedUserQueryRef(pageRequest);
+        return this._pagedUsers.asObservable();
     }
 
-    getUsers(pageSize: number = 10, pageNo: number = 0) {
-        this.apollo
-            .watchQuery<GetUsersResponse>({
-                query: getUsersQuery,
-                variables: {
-                    input: {
-                        pageSize,
-                        pageNo,
-                    },
+    createpagedUserQueryRef(pageRequest: PageRequest<User>) {
+        this.pagedUserQueryRef = this.apollo.watchQuery<PagedUsersResponse>({
+            query: getUsersQuery,
+            variables: {
+                input: {
+                    pageSize: pageRequest.size,
+                    pageNo: pageRequest.page,
                 },
-            })
-            .valueChanges.subscribe(
-                (result) => {
-                    // console.log(result);
-                    this._users.next(result.data.pagedusers);
+                sortby: {
+                    by: pageRequest.sort.property,
+                    sort: pageRequest.sort.order,
                 },
-                (error) => console.error(error)
-            );
+            },
+        });
+        this.pagedUserQueryRef.valueChanges.subscribe((result) => {
+            console.log('pagedUserQueryRef value changed');
+            const response = result.data.pagedusers;
+            const page = {
+                content: response.users,
+                number: pageRequest.page,
+                size: pageRequest.size,
+                totalElements: response.total,
+            };
+            this._pagedUsers.next(page);
+        });
     }
-    page(pageRequest: PageRequest<User>): Observable<Page<User>> {
+
+    refetchPagedUserQuery() {
+        this.pagedUserQueryRef.refetch();
+    }
+
+    deleteUser(id: string) {
         this.apollo
-            .watchQuery<PagedUsersResponse>({
-                query: getUsersQuery,
+            .mutate({
+                mutation: deleteUserMutation,
                 variables: {
-                    input: {
-                        pageSize: pageRequest.size,
-                        pageNo: pageRequest.page,
-                    },
-                    sortby: {
-                        by: pageRequest.sort.property,
-                        sort: pageRequest.sort.order,
-                    },
+                    id,
                 },
             })
-            .valueChanges.subscribe(
-                (result) => {
-                    // console.log(result);
-                    // this._users.next(result.data.pagedusers);
-                    const response = result.data.pagedusers;
-                    const page = {
-                        content: response.users,
-                        number: pageRequest.page,
-                        size: pageRequest.size,
-                        totalElements: response.total,
-                    };
-                    this._userPage.next(page);
-                    // page.content = result.data.pagedusers;
-                    // return page;
+            .subscribe(
+                ({ data }) => {
+                    this.refetchPagedUserQuery();
+                    return true;
                 },
-                (error) => console.error(error)
+                (error) => {
+                    console.log('there was an error sending the query', error);
+                }
             );
-        return this._userPage.asObservable();
+        return false;
     }
 }

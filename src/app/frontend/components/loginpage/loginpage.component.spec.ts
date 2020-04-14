@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginpageComponent', () => {
     let component: LoginpageComponent;
@@ -20,6 +21,7 @@ describe('LoginpageComponent', () => {
                 MaterialModule,
                 ApolloTestingModule,
                 ReactiveFormsModule,
+                RouterTestingModule,
             ],
             providers: [UserService, FormBuilder],
         }).compileComponents();

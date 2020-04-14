@@ -5,6 +5,7 @@ import { DataSource } from '@angular/cdk/collections';
 
 export class PaginatedDataSource<T> implements DataSource<T> {
     private pageNumber = new Subject<number>();
+    private pageSize = new Subject<number>();
     private sort = new Subject<Sort<T>>();
 
     public page$: Observable<Page<T>>;
@@ -38,5 +39,13 @@ export class PaginatedDataSource<T> implements DataSource<T> {
 
     fetch(page: number): void {
         this.pageNumber.next(page);
+    }
+
+    setSize(size: number): void {
+        this.pageSize.next(size);
+    }
+    getSize(): number {
+        // return this.pageSize.
+        return 20;
     }
 }

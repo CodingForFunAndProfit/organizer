@@ -11,7 +11,8 @@
 -   split admin components in featuremodul
 -   role base authorization
 -   settings (database -> localStorage -> Default Configfile )
-
+-   tests for the current features
+-   setup ci/cd for this project (client) -> hosting on github?
 
 https://blog.angular-university.io/angular-jwt-authentication/
 https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-context

@@ -1,8 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import {
-    ApolloTestingModule,
-    ApolloTestingController,
-} from 'apollo-angular/testing';
+import { ApolloTestingModule } from 'apollo-angular/testing';
 import { ActionsComponent } from './actions.component';
 
 import { ActionsService } from 'src/app/services/actions.service';
