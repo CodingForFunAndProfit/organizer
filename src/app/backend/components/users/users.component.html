@@ -9,7 +9,7 @@
             [length]="page.totalElements"
             [pageSize]="page.size" 
             [pageIndex]="page.number"
-            (page)="tableSource.fetch($event)"
+            (page)="tableSource.fetch($event.pageIndex)"
             paginatorEvent
             [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons>
         </mat-paginator>
