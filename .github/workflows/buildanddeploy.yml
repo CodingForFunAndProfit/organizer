@@ -1,4 +1,4 @@
-name: Test and Build and Deploy
+name: Build and Deploy
 on:
     push:
         branches:
@@ -15,11 +15,13 @@ jobs:
             - name: Install Test and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
               run: |
                   npm install
+                  npm run lint
+                  npm run test:gh
                   npm run build:ci
 
             - name: Deploy to GitHub Pages
               uses: JamesIves/github-pages-deploy-action@3.4.8
               with:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                  BRANCH: gh-pages # The branch the action should deploy to.
+                  BRANCH: master # The branch the action should deploy to.
                   FOLDER: docs # The folder the action should deploy.

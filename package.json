@@ -2,7 +2,7 @@
     "name": "organizer",
     "version": "0.0.0",
     "scripts": {
-        "clean": "rimraf ./dist",
+        "clean": "rimraf ./docs",
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
@@ -11,7 +11,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "test:gh": "ng test --watch=false --browsers=ChromeHeadlessCustom",
-        "build:ci": "npm run clean && npm run lint && npm run test:gh && npm run build:prod"
+        "build:ci": "npm run clean && npm run build:prod"
     },
     "private": true,
     "dependencies": {
