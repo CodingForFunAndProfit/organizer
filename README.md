@@ -31,3 +31,9 @@ https://stackoverflow.com/questions/40508557/multiple-layout-for-different-pages
 https://medium.com/angular-in-depth/angular-routing-reusing-common-layout-for-pages-from-different-modules-440a23f86b57
 https://stackblitz.com/github/jbojcic1/angular-routing-example/tree/routing-reuse-layout-example-2-with-lazy-loaded-modules?file=src%2Fapp%2Flayout%2Flayout-routing.module.ts
 https://stackoverflow.com/questions/43298011/angular-error-cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-inpu
+https://blog.angular-university.io/angular-material-data-table/
+https://stackoverflow.com/questions/53672784/how-to-implement-custom-material-data-source-for-data-table
+
+https://medium.com/angular-in-depth/angular-material-pagination-datasource-73080d3457fe
+https://stackblitz.com/edit/angular-paginated-material-datasource?file=src%2Fapp%2Fapp.component.ts
+https://stackblitz.com/angular/drlvebnvprk?file=src%2Fapp%2Fcustomers%2Fcustomers.module.ts
