@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Actions</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+    <mat-form-field>
+        <input matInput placeholder="What needs to be done?" autofocus="" [(ngModel)]="newAction.title" (keyup.enter)="add()" autocomplete="off"/>
+    </mat-form-field>
+
+    <mat-list>
+        <mat-list-item *ngFor="let action of actions" >
+            <mat-checkbox [checked]="action.done"></mat-checkbox>
+            <div >{{action.title}}</div>
+            <mat-icon aria-hidden="false" aria-label="Delete action" (click)="deleteAction(action)">delete</mat-icon>
+        </mat-list-item>
+    </mat-list>
+
+    <h2>Completed</h2>
+    <mat-list>
+        <mat-list-item *ngFor="let action of actionsCompleted()" >
+            <mat-checkbox [checked]="action.done"></mat-checkbox>
+            <div >{{action.title}}</div>
+        </mat-list-item>
+    </mat-list>
+    </mat-card-content>
+</mat-card>

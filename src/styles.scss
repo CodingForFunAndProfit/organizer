@@ -1,0 +1,53 @@
+@import 'app/shared/material/themes/numberone.theme.scss';
+@import 'app/shared/material/themes/numbertwo.theme.scss';
+@import 'app/shared/common/sidenavigation/sidenavigation.component.theme.scss';
+
+@mixin custom-components-theme($theme) {
+    @include sidenavigation-component-theme($theme);
+    @include form-theme($theme);
+}
+.numberone-dark {
+    @include angular-material-theme($numberone-dark-theme);
+    @include custom-components-theme($numberone-dark-theme);
+}
+.numberone-light {
+    @include angular-material-theme($numberone-light-theme);
+    @include custom-components-theme($numberone-light-theme);
+}
+.numbertwo-dark {
+    @include angular-material-theme($numbertwo-dark-theme);
+    @include custom-components-theme($numbertwo-dark-theme);
+}
+.numbertwo-light {
+    @include angular-material-theme($numbertwo-light-theme);
+    @include custom-components-theme($numbertwo-light-theme);
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+.fill {
+    flex: 1 1 auto;
+}
+.container {
+    padding: 15px 35px;
+}
+.mat-sidenav-container {
+    height: calc(100% - 64px);
+}
+.mat-sidenav {
+    min-width: 150px;
+}
+.mat-sidenav h2 {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.mat-typography {
+    background-color: #646464 !important;
+}

@@ -1,0 +1,23 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$numbertwo-light-primary: mat-palette($mat-light-blue);
+$numbertwo-light-accent: mat-palette($mat-orange, A200, A100, A400);
+$numbertwo-light-warn: mat-palette($mat-red);
+
+$numbertwo-light-theme: mat-light-theme(
+  $numbertwo-light-primary,
+  $numbertwo-light-accent,
+  $numbertwo-light-warn
+);
+
+$numbertwo-dark-primary: mat-palette($mat-light-blue);
+$numbertwo-dark-accent: mat-palette($mat-yellow, A200, A100, A400);
+$numbertwo-dark-warn: mat-palette($mat-red);
+
+$numbertwo-dark-theme: mat-dark-theme(
+  $numbertwo-dark-primary,
+  $numbertwo-dark-accent,
+  $numbertwo-dark-warn
+);
