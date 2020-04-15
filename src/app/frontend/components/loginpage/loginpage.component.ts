@@ -46,7 +46,11 @@ export class LoginpageComponent implements OnInit {
     }
 
     public async login() {
-        await this.authService.login(this.email, this.password);
+        // console.log(this.loginForm);
+        await this.authService.login(
+            this.loginForm.value.email,
+            this.loginForm.value.password
+        );
         this.router.navigate(['/dashboard']);
     }
 
