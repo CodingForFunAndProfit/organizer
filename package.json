@@ -2,7 +2,6 @@
     "name": "organizer",
     "version": "0.0.0",
     "scripts": {
-        "clean": "rimraf ./docs/**/*.*",
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
