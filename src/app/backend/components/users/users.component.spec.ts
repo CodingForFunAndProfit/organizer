@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UsersComponent } from './users.component';
 import { ApolloTestingModule } from 'apollo-angular/testing';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UsersComponent', () => {
     let component: UsersComponent;
@@ -9,7 +11,11 @@ describe('UsersComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ApolloTestingModule],
+            imports: [
+                ApolloTestingModule,
+                MaterialModule,
+                BrowserAnimationsModule,
+            ],
             declarations: [UsersComponent],
         }).compileComponents();
     }));
