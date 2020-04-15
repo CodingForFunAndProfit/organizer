@@ -28,11 +28,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
         20
     );
 
-    /*
-    @ViewChild(MatSort, { static: true }) sort: MatSort;
-    @ViewChild(MatTable) table: MatTable<User[]>;
-    */
-
     constructor(private usersService: UsersService) {}
 
     sortData(event: any) {
@@ -51,7 +46,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     }
 
     paginatorEvent(event: any) {
-        console.log(event);
+        // console.log(event);
         // if(this.tableSource.page$)
     }
 }

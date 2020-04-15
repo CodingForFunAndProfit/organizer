@@ -37,23 +37,20 @@ export class LoginpageComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.authService.currentUserValue);
+        // console.log(this.authService.currentUserValue);
+        /*
         if (this.authService.currentUserValue) {
             this.router.navigate(['/dashboard']);
         }
+        */
     }
 
     public async login() {
-        const token = await this.authService.login(
-            'mail@florianstolz.net',
-            'password'
-        );
-        console.log('Token in login:' + token);
+        await this.authService.login(this.email, this.password);
         this.router.navigate(['/dashboard']);
     }
 
     public logout() {
-        console.log('logout');
         this.authService.logout();
     }
 }

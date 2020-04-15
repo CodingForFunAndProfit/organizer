@@ -89,7 +89,7 @@ export class UsersService {
             },
         });
         this.pagedUserQueryRef.valueChanges.subscribe((result) => {
-            console.log('pagedUserQueryRef value changed');
+            // console.log('pagedUserQueryRef value changed');
             const response = result.data.pagedusers;
             const page = {
                 content: response.users,
