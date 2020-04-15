@@ -2,11 +2,11 @@
     "name": "organizer",
     "version": "0.0.0",
     "scripts": {
-        "clean": "rimraf ./dist",
+        "clean": "rimraf ./docs",
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "build:prod": "ng build Organizer --baseHref=/Organizer/ --prod",
+        "build:prod": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
