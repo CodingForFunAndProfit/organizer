@@ -19,7 +19,7 @@ jobs:
                   npm run build:ci
 
             - name: Deploy to GitHub Pages
-              uses: JamesIves/github-pages-deploy-action@3.4.8
+              uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
                   BRANCH: master # The branch the action should deploy to.
