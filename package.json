@@ -6,12 +6,12 @@
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
-        "build:prod": "ng build --prod --outputPath=docs --deleteOutputPath=true",
+        "build:prod": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "test:gh": "ng test --watch=false --browsers=ChromeHeadlessCustom",
-        "build:ci": "npm run clean && npm run build:prod"
+        "build:ci": "npm run build:prod"
     },
     "private": true,
     "dependencies": {
