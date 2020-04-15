@@ -42,6 +42,4 @@ testem.log
 /typings
 
 temp.txt
-/docs/*.*
-/doc/**/*
-!/docs/.placeholder
+
