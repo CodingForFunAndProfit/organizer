@@ -6,12 +6,14 @@ import { ApolloTestingModule } from 'apollo-angular/testing';
 import { LoginComponent } from '../login/login.component';
 import { SignupComponent } from '../signup/signup.component';
 import { AuthService } from 'src/app/services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {
     HttpClientTestingModule,
     HttpTestingController,
 } from '@angular/common/http/testing';
+import { MaterialModule } from 'src/app/shared/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserauthComponent', () => {
     let component: UserAuthComponent;
@@ -23,6 +25,9 @@ describe('UserauthComponent', () => {
                 ApolloTestingModule,
                 RouterTestingModule,
                 HttpClientTestingModule,
+                MaterialModule,
+                BrowserAnimationsModule,
+                ReactiveFormsModule,
             ],
             declarations: [UserAuthComponent, LoginComponent, SignupComponent],
             providers: [AuthService, FormBuilder, HttpClient],

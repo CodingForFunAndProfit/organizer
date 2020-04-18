@@ -1,18 +1,52 @@
 <mat-card class="themeselection-card">
     <mat-card-header>
         <mat-card-title>Theme</mat-card-title>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <label id="">Pick your favorite theme</label>
-    <mat-radio-group aria-label="Select a theme" [(ngModel)]="theme" (change)="changeTheme($event)" >
-        <mat-radio-button value="numberone">Number One</mat-radio-button>
-        <mat-radio-button value="numbertwo">Number Two</mat-radio-button>
-    </mat-radio-group>
-    <label id="">Mode</label>
-    <mat-radio-group aria-label="dark" [(ngModel)]="dark" (change)="changeLight($event)">
-        <mat-radio-button [value]=true>dark</mat-radio-button>
-        <mat-radio-button [value]=false>light</mat-radio-button>
-    </mat-radio-group>
-  </mat-card-content>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <label id="">Pick your favorite theme</label>
+        <mat-radio-group
+            aria-label="Select a theme"
+            [(ngModel)]="theme"
+            (change)="changeTheme($event)"
+            class="column-group"
+        >
+            <mat-radio-button value="numberone">Number One</mat-radio-button>
+            <mat-radio-button value="numbertwo">Number Two</mat-radio-button>
+        </mat-radio-group>
+        <label id="">Mode</label>
+        <mat-radio-group
+            aria-label="dark"
+            [(ngModel)]="dark"
+            (change)="changeLight($event)"
+            class="column-group"
+        >
+            <mat-radio-button [value]="true">dark</mat-radio-button>
+            <mat-radio-button [value]="false">light</mat-radio-button>
+        </mat-radio-group>
+    </mat-card-content>
+</mat-card>
+
+<mat-card class="themeselection-card">
+    <mat-card-header>
+        <mat-card-title>Logging</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <label id="">Select the log level</label>
+        <mat-radio-group
+            aria-label="Select log level"
+            [(ngModel)]="loglevel"
+            (change)="changeLoglevel($event)"
+            class="column-group"
+        >
+            <mat-radio-button value="0">All</mat-radio-button>
+            <mat-radio-button value="1">Debug</mat-radio-button>
+            <mat-radio-button value="2">Info</mat-radio-button>
+            <mat-radio-button value="3">Warn</mat-radio-button>
+            <mat-radio-button value="4">Errors</mat-radio-button>
+            <mat-radio-button value="5">Fatal</mat-radio-button>
+            <mat-radio-button value="6">Off</mat-radio-button>
+        </mat-radio-group>
+    </mat-card-content>
 </mat-card>

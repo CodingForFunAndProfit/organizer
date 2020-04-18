@@ -27,11 +27,13 @@ export class LoginComponent implements OnInit {
 
     public async login() {
         // console.log(this.loginForm);
-        await this.authService.login(
+        const login = await this.authService.login(
             this.loginForm.value.email,
             this.loginForm.value.password
         );
-        this.router.navigate(['/dashboard']);
+        if (login) {
+            this.router.navigate(['/dashboard']);
+        }
     }
 
     public logout() {

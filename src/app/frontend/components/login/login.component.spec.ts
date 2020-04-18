@@ -4,13 +4,15 @@ import { LoginComponent } from './login.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LoginComponent', () => {
     let component: LoginComponent;
     let fixture: ComponentFixture<LoginComponent>;
+    let service: AuthService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -20,9 +22,12 @@ describe('LoginComponent', () => {
                 RouterTestingModule,
                 BrowserAnimationsModule,
                 MaterialModule,
+                ReactiveFormsModule,
+                HttpClientTestingModule,
             ],
             providers: [AuthService, FormBuilder],
         }).compileComponents();
+        service = TestBed.inject(AuthService);
     }));
 
     beforeEach(() => {

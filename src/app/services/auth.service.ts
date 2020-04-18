@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 import gql from 'graphql-tag';
 import { Apollo, QueryRef } from 'apollo-angular';
-import { UserService } from './user.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+
 import { User } from '../entities/user/user.entity';
-import { Router } from '@angular/router';
+import { LogService } from './logger/log.service';
 
 const loginMutation = gql`
     mutation login($email: String!, $password: String!) {
@@ -28,7 +29,14 @@ const meQuery = gql`
         }
     }
 `;
-
+interface LogoutResponse {
+    logout: boolean;
+}
+const logoutMutation = gql`
+    mutation {
+        logout
+    }
+`;
 interface GetMe {
     me: User;
 }
@@ -43,8 +51,8 @@ export class AuthService {
 
     constructor(
         private apollo: Apollo,
-        private userService: UserService,
-        private router: Router
+        private router: Router,
+        private log: LogService
     ) {
         this.currentUserSubject = new BehaviorSubject<User>(
             JSON.parse(localStorage.getItem('currentUser'))
@@ -58,8 +66,13 @@ export class AuthService {
         email: string,
         password: string
     ): Promise<string | null> {
-        console.log('authService email:' + email);
-        console.log('authService password:' + password);
+        this.log.info('Login request');
+        if (!(email && email.length > 0)) {
+            this.log.warn('Email null or empty.');
+        }
+        if (!(password && password.length > 0)) {
+            this.log.warn('Password null or empty.');
+        }
         this.apollo
             .mutate<LoginResponse>({
                 mutation: loginMutation,
@@ -70,22 +83,45 @@ export class AuthService {
             })
             .subscribe(
                 (response) => {
-                    localStorage.setItem('token', response.data.login);
-                    this.getUser();
-                    return response.data.login;
+                    const login = response.data.login;
+                    if (login) {
+                        localStorage.setItem('token', response.data.login);
+                        this.getUser();
+                        this.log.info('Authenticated');
+                        return response.data.login;
+                    } else {
+                        this.log.error('Authentication failed.');
+                    }
                 },
                 (error) => {
-                    // console.log('there was an error', error);
-                    // this.logger.error(error);
+                    this.log.error('AuthService -> login', error);
                 }
             );
         return null;
     }
     public logout() {
-        localStorage.removeItem('currentUser');
-        localStorage.removeItem('token');
-        this.currentUserSubject.next(null);
-        this.router.navigate(['/auth']);
+        this.apollo
+            .mutate<LogoutResponse>({
+                mutation: logoutMutation,
+            })
+            .subscribe(
+                (response) => {
+                    const logout = response.data.logout;
+                    if (logout) {
+                        this.log.info('User logged out');
+                    }
+                    // else -> possible?
+
+                    // delete local authentication data
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('token');
+                    this.currentUserSubject.next(null);
+                    this.router.navigate(['/auth']);
+                },
+                (error) => {
+                    this.log.error('AuthService -> logout', error);
+                }
+            );
     }
     public async getUser() {
         this.query = this.apollo.watchQuery<GetMe>({

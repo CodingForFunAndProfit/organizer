@@ -16,8 +16,8 @@ export class LogEntry {
         if (this.logWithDate) {
             ret = new Date() + ' - ';
         }
-        ret += 'Type: ' + LogLevel[this.level];
-        ret += ' - Message: ' + this.message;
+        ret += LogLevel[this.level];
+        ret += ' : ' + this.message;
         if (this.extraInfo.length) {
             ret += ' - Extra Info: ' + this.formatParams(this.extraInfo);
         }

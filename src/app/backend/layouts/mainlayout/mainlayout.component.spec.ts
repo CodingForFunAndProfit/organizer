@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 import { ProgressComponent } from 'src/app/components/progress/progress.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavigationComponent } from 'src/app/shared/common/sidenavigation/sidenavigation.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('MainlayoutComponent', () => {
     let component: MainlayoutComponent;
@@ -19,6 +20,7 @@ describe('MainlayoutComponent', () => {
                 RouterTestingModule,
                 MaterialModule,
                 BrowserAnimationsModule,
+                HttpClientTestingModule,
             ],
             declarations: [
                 MainlayoutComponent,

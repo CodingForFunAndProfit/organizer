@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { SettingsComponent } from './settings.component';
+import { LogService } from 'src/app/services/logger/log.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SettingsComponent', () => {
     let component: SettingsComponent;
@@ -11,8 +13,14 @@ describe('SettingsComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [BrowserAnimationsModule, MaterialModule, FormsModule],
+            imports: [
+                BrowserAnimationsModule,
+                MaterialModule,
+                FormsModule,
+                HttpClientTestingModule,
+            ],
             declarations: [SettingsComponent],
+            providers: [LogService],
         }).compileComponents();
     }));
 
