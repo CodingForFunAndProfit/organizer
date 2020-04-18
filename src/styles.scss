@@ -51,3 +51,15 @@ body {
 .mat-typography {
     background-color: #646464 !important;
 }
+
+.standaloneForm {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+.fw {
+    width: 100%;
+}
+.mat-form-field-underline {
+    background-color: green;
+}

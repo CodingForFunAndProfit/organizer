@@ -1,0 +1,37 @@
+<form [formGroup]="signupForm" class="standaloneForm" (ngSubmit)="signup()">
+    <mat-form-field appearance="fill" class="fw">
+        <mat-label>Email</mat-label>
+        <input
+            #email
+            matInput
+            type="email"
+            formControlName="signupemail"
+            autocomplete="username"
+        />
+        <button mat-icon-button matSuffix><mat-icon>email</mat-icon></button>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="fw">
+        <mat-label>Enter your password</mat-label>
+        <input
+            #password
+            matInput
+            type="password"
+            formControlName="signuppassword"
+            autocomplete="new-password"
+        />
+        <button mat-icon-button matSuffix>
+            <mat-icon>visibility_off</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <button
+        mat-raised-button
+        color="accent"
+        class="fw"
+        type="submit"
+        [disabled]="!signupForm.valid"
+    >
+        Signup
+    </button>
+</form>

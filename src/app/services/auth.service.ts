@@ -58,6 +58,8 @@ export class AuthService {
         email: string,
         password: string
     ): Promise<string | null> {
+        console.log('authService email:' + email);
+        console.log('authService password:' + password);
         this.apollo
             .mutate<LoginResponse>({
                 mutation: loginMutation,
@@ -73,7 +75,8 @@ export class AuthService {
                     return response.data.login;
                 },
                 (error) => {
-                    console.log('there was an error', error);
+                    // console.log('there was an error', error);
+                    // this.logger.error(error);
                 }
             );
         return null;
@@ -82,7 +85,7 @@ export class AuthService {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('token');
         this.currentUserSubject.next(null);
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
     }
     public async getUser() {
         this.query = this.apollo.watchQuery<GetMe>({

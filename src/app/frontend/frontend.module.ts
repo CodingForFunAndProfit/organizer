@@ -5,9 +5,18 @@ import { LoginpageComponent } from './components/loginpage/loginpage.component';
 import { FrontendRoutingModule } from './frontend-routing.module';
 import { MaterialModule } from '../shared/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { UserAuthComponent } from './components/userauth/userauth.component';
 
 @NgModule({
-    declarations: [SimplelayoutComponent, LoginpageComponent],
+    declarations: [
+        SimplelayoutComponent,
+        LoginpageComponent,
+        SignupComponent,
+        LoginComponent,
+        UserAuthComponent,
+    ],
     imports: [
         CommonModule,
         FrontendRoutingModule,

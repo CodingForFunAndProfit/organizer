@@ -16,6 +16,7 @@
 
 ## TODOS
 
+-   logging for problems like the login problem
 -   register form
 -   website
 -   confirm user

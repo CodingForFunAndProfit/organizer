@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/entities/user/user.entity';
@@ -15,6 +15,7 @@ export class LoginpageComponent implements OnInit {
     email: string;
     password: string;
     loginForm: FormGroup;
+    signupForm: FormGroup;
 
     me: User;
 
@@ -28,12 +29,15 @@ export class LoginpageComponent implements OnInit {
         private router: Router
     ) {
         this.loginForm = this.formBuilder.group({
-            email: '',
-            password: '',
+            email: ['', Validators.required],
+            password: ['', Validators.required],
         });
-        if (this.authService.currentUserValue) {
-            this.router.navigate(['/dashboard']);
-        }
+
+        this.signupForm = this.formBuilder.group({
+            signupemail: ['', Validators.required],
+            signuppassword: ['', Validators.required],
+            signuppassword2: ['', Validators.required],
+        });
     }
 
     ngOnInit(): void {
@@ -53,6 +57,8 @@ export class LoginpageComponent implements OnInit {
         );
         this.router.navigate(['/dashboard']);
     }
+
+    public async signup() {}
 
     public logout() {
         this.authService.logout();
