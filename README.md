@@ -47,3 +47,5 @@ https://blog.w3radar.com/less-known-angular-features-probably-never-used/
 -   APP_BOOTSTRAP_LISTENER Token
 -   Content Projection with <ng-content>
     https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
+
+https://itnext.io/improve-your-angular-apps-performance-66032f63dc09

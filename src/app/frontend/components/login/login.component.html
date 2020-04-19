@@ -1,4 +1,9 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="card-form">
+<form
+    [formGroup]="loginForm"
+    (ngSubmit)="login()"
+    class="card-form"
+    *ngIf="!loading"
+>
     <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
         <input
@@ -43,3 +48,7 @@
         Login
     </button>
 </form>
+<div class="loginloader" *ngIf="loading">
+    Login...
+    <mat-progress-bar [mode]="'indeterminate'"> </mat-progress-bar>
+</div>

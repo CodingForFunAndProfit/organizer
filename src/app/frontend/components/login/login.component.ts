@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     email: FormControl;
     password: FormControl;
     loginForm: FormGroup;
+    loading: boolean = false;
     constructor(
         private authService: AuthService,
         private formBuilder: FormBuilder,
@@ -40,10 +41,12 @@ export class LoginComponent implements OnInit {
 
     public async login() {
         // console.log(this.loginForm);
+        this.loading = true;
         const login = await this.authService.login(
             this.loginForm.value.email,
             this.loginForm.value.password
         );
+        this.loading = false;
         if (login) {
             this.router.navigate(['/dashboard']);
         }

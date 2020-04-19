@@ -8,6 +8,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserAuthComponent } from './components/userauth/userauth.component';
 import { ConfirmuserComponent } from './components/confirmuser/confirmuser.component';
+import { HomeComponent } from './components/home/home.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
     declarations: [
@@ -16,6 +18,7 @@ import { ConfirmuserComponent } from './components/confirmuser/confirmuser.compo
         LoginComponent,
         UserAuthComponent,
         ConfirmuserComponent,
+        HomeComponent,
     ],
     imports: [
         CommonModule,
@@ -23,6 +26,7 @@ import { ConfirmuserComponent } from './components/confirmuser/confirmuser.compo
         MaterialModule,
         FormsModule,
         ReactiveFormsModule,
+        FlexLayoutModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

@@ -41,6 +41,14 @@ interface GetMe {
     me: User;
 }
 
+interface ConfirmUserResponse {
+    confirmUser: boolean;
+}
+const confirmUserMutation = gql`
+    mutation confirmUser($token: String!) {
+        confirmUser(token: $token)
+    }
+`;
 @Injectable({
     providedIn: 'root',
 })
@@ -141,5 +149,32 @@ export class AuthService {
                 console.log('there was an error', error);
             }
         );
+    }
+
+    public confirmUser(token: string) {
+        this.apollo
+            .mutate<ConfirmUserResponse>({
+                mutation: confirmUserMutation,
+            })
+            .subscribe(
+                (response) => {
+                    const confirmed = response.data.confirmUser;
+                    if (confirmed) {
+                        this.log.info('User confirmed');
+                    }
+                    // else -> possible?
+
+                    // delete local authentication data
+                    /*
+                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('token');
+                    this.currentUserSubject.next(null);
+                    this.router.navigate(['/auth']);
+                    */
+                },
+                (error) => {
+                    this.log.error('AuthService -> logout', error);
+                }
+            );
     }
 }
