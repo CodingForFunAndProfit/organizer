@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+    FormGroup,
+    FormBuilder,
+    Validators,
+    FormControl,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,17 +14,25 @@ import { AuthService } from 'src/app/services/auth.service';
     styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-    email: string;
-    password: string;
+    email: FormControl;
+    password: FormControl;
     loginForm: FormGroup;
     constructor(
         private authService: AuthService,
         private formBuilder: FormBuilder,
         private router: Router
     ) {
+        this.email = new FormControl('', [
+            Validators.required,
+            Validators.email,
+        ]);
+        this.password = new FormControl('', [
+            Validators.required,
+            Validators.minLength(8),
+        ]);
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required],
+            email: this.email,
+            password: this.password,
         });
     }
 

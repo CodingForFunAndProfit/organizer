@@ -1,28 +1,26 @@
-<form [formGroup]="signupForm" class="standaloneForm" (ngSubmit)="signup()">
-    <mat-form-field appearance="fill" class="fw">
+<form [formGroup]="signupForm" class="card-form" (ngSubmit)="signup()">
+    <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input
-            #email
-            matInput
-            type="email"
-            formControlName="signupemail"
-            autocomplete="username"
-        />
-        <button mat-icon-button matSuffix><mat-icon>email</mat-icon></button>
+        <input #email matInput type="email" autocomplete="username" />
+        <mat-error *ngIf="email.errors?.required">
+            Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="email.errors?.email && !email.errors?.required">
+            Please enter a valid email address
+        </mat-error>
+        <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="fw">
+    <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input
-            #password
-            matInput
-            type="password"
-            formControlName="signuppassword"
-            autocomplete="new-password"
-        />
-        <button mat-icon-button matSuffix>
-            <mat-icon>visibility_off</mat-icon>
-        </button>
+        <input #password matInput type="password" autocomplete="new-password" />
+        <mat-error *ngIf="password.errors?.required">
+            Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="password.errors?.minlength">
+            Please enter a password with a minimum of 8 characters
+        </mat-error>
+        <mat-icon matSuffix>visibility_off</mat-icon>
     </mat-form-field>
 
     <button
