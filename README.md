@@ -26,3 +26,24 @@
 -   settings (database -> localStorage -> Default Configfile )
 -   tests for the current features
 -   setup the corrent url for the api
+
+## Things
+
+// run a single test-file  
+npm run test -- --include src/app/components/component/component-name.component.spec.ts  
+// directory or bunch of files  
+npm run test -- --include src/app/components
+
+## to checkout
+
+https://blog.w3radar.com/less-known-angular-features-probably-never-used/
+
+-   Meta Service
+-   Title Service
+-   Location Service
+-   @Attribute Decorator
+-   NgPlural Directive
+-   APP_INITIALIZER Token
+-   APP_BOOTSTRAP_LISTENER Token
+-   Content Projection with <ng-content>
+    https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b

@@ -9,8 +9,10 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "test:gh": "ng test --watch=false --browsers=ChromeHeadlessCustom",
-        "build:ci": "npm run build:prod"
+        "test:gh": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCustom",
+        "e2e:gh": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
+        "build:ci": "npm run build:prod",
+        "cov": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCustom --code-coverage"
     },
     "private": true,
     "dependencies": {

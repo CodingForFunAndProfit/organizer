@@ -8,8 +8,6 @@ import { MaterialModule } from './shared/material/material.module';
 import { ProgressComponent } from './components/progress/progress.component';
 import { SidenavigationComponent } from './shared/common/sidenavigation/sidenavigation.component';
 import { ApolloTestingModule } from 'apollo-angular/testing';
-import { LoginComponent } from './frontend/components/login/login.component';
-import { SignupComponent } from './frontend/components/signup/signup.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
