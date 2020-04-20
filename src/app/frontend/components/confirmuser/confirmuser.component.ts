@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LogService } from 'src/app/services/logger/log.service';
 
 /*
 mutation{
@@ -13,17 +14,15 @@ mutation{
     styleUrls: ['./confirmuser.component.scss'],
 })
 export class ConfirmuserComponent implements OnInit {
-    uuid: string;
     constructor(
-        private authService: AuthService,
-        private route: ActivatedRoute
+        public authService: AuthService,
+        private route: ActivatedRoute,
+        private log: LogService
     ) {
-        this.route.params.subscribe(
-            (params) => (this.uuid = params.confirmationUuid)
+        this.route.params.subscribe((params) =>
+            this.authService.confirmUser(params.confirmationUuid)
         );
     }
 
-    ngOnInit(): void {
-        this.authService.confirmUser(this.uuid);
-    }
+    ngOnInit(): void {}
 }

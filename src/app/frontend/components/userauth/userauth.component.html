@@ -6,13 +6,17 @@
                     <ng-template mat-tab-label>
                         Login
                     </ng-template>
-                    <app-login></app-login>
+                    <ng-template matTabContent>
+                        <app-login></app-login>
+                    </ng-template>
                 </mat-tab>
                 <mat-tab>
                     <ng-template mat-tab-label>
                         Signup
                     </ng-template>
-                    <app-signup></app-signup>
+                    <ng-template matTabContent>
+                        <app-signup></app-signup>
+                    </ng-template>
                 </mat-tab>
             </mat-tab-group>
         </mat-card-content>

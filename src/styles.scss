@@ -22,7 +22,12 @@
     @include angular-material-theme($numbertwo-light-theme);
     @include custom-components-theme($numbertwo-light-theme);
 }
-
+/*
+$custom-typography: mat-typography-config(
+    $font-family: '"Poiret One", cursive;',
+);
+@include mat-core($custom-typography);
+*/
 html,
 body {
     height: 100%;
@@ -37,6 +42,7 @@ body {
 .container {
     padding: 15px 35px;
 }
+
 .mat-sidenav-container {
     height: calc(100% - 64px);
 }

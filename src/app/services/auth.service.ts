@@ -49,6 +49,15 @@ const confirmUserMutation = gql`
         confirmUser(token: $token)
     }
 `;
+
+interface SignupUserResponse {
+    UserRegister: boolean;
+}
+const signupUserMutation = gql`
+    mutation UserRegister($input: RegisterInput!) {
+        UserRegister(input: $input)
+    }
+`;
 @Injectable({
     providedIn: 'root',
 })
@@ -56,6 +65,9 @@ export class AuthService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     private query: QueryRef<any>;
+    // confirmed: Observable<boolean>;
+    private _confirmed: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public confirmed: Observable<boolean> = this._confirmed.asObservable();
 
     constructor(
         private apollo: Apollo,
@@ -107,6 +119,7 @@ export class AuthService {
             );
         return null;
     }
+
     public logout() {
         this.apollo
             .mutate<LogoutResponse>({
@@ -131,6 +144,7 @@ export class AuthService {
                 }
             );
     }
+
     public async getUser() {
         this.query = this.apollo.watchQuery<GetMe>({
             query: meQuery,
@@ -155,26 +169,56 @@ export class AuthService {
         this.apollo
             .mutate<ConfirmUserResponse>({
                 mutation: confirmUserMutation,
+                variables: {
+                    token,
+                },
             })
             .subscribe(
                 (response) => {
                     const confirmed = response.data.confirmUser;
                     if (confirmed) {
                         this.log.info('User confirmed');
+                    } else {
+                        this.log.info('Could not confirm user');
                     }
-                    // else -> possible?
-
-                    // delete local authentication data
-                    /*
-                    localStorage.removeItem('currentUser');
-                    localStorage.removeItem('token');
-                    this.currentUserSubject.next(null);
-                    this.router.navigate(['/auth']);
-                    */
+                    this._confirmed.next(confirmed);
                 },
                 (error) => {
-                    this.log.error('AuthService -> logout', error);
+                    this.log.error('AuthService -> confirmUser', error);
                 }
             );
+    }
+
+    public signupUser(email: string, password: string): Promise<boolean> {
+        this.log.info('Signup request');
+        if (!(email && email.length > 0)) {
+            this.log.warn('Email null or empty.');
+        }
+        if (!(password && password.length > 0)) {
+            this.log.warn('Password null or empty.');
+        }
+        this.apollo
+            .mutate<SignupUserResponse>({
+                mutation: signupUserMutation,
+                variables: {
+                    email,
+                    password,
+                },
+            })
+            .subscribe(
+                (response) => {
+                    const register = response.data.UserRegister;
+                    if (register) {
+                        this.log.info('User got mail to confirm his account');
+                    } else {
+                        this.log.error('Error during registration.');
+                    }
+                    return register;
+                },
+                (error) => {
+                    this.log.error('AuthService -> signupUser', error);
+                }
+            );
+        return null;
     }
 }

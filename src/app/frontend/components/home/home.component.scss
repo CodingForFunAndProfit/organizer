@@ -1,7 +1,7 @@
 // slanted edge here
-.hero img {
-    // clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-}
+// .hero img {
+// clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+// }
 .features {
     clip-path: polygon(0 0, 1600px 0, 1600px 87%, 0 100%);
 }
@@ -37,7 +37,8 @@
     }
 
     h1 {
-        font-size: 32px;
+        font-family: 'Poiret One', cursive;
+        font-size: 60px;
     }
 
     p {
