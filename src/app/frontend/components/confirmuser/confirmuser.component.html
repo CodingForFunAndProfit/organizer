@@ -1,11 +1,18 @@
 <div class="formwrapper">
     <mat-card class="formCard">
         <mat-card-content>
-            <div class="loginloader" *ngIf="!(authService.confirmed | async)">
-                Confirming....
-                <mat-progress-bar [mode]="'indeterminate'"> </mat-progress-bar>
-            </div>
-            <div class="loginloader" *ngIf="authService.confirmed | async">
+            <ng-template #checking>
+                <div class="loginloader">
+                    Confirming....
+                    <mat-progress-bar [mode]="'indeterminate'">
+                    </mat-progress-bar>
+                </div>
+            </ng-template>
+
+            <div
+                class="loginloader"
+                *ngIf="authService.confirmed | async; else checking"
+            >
                 Your account is activated. You can now login.
                 <a routerLink="/auth" mat-raised-button color="accent">Login</a>
             </div>
