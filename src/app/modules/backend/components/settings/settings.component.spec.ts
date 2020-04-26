@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 import { SettingsComponent } from './settings.component';
 import { LogService } from 'src/app/services/logger/log.service';

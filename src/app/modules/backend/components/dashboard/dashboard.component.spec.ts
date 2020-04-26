@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 describe('DashboardComponent', () => {
     let component: DashboardComponent;

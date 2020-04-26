@@ -1,33 +1,37 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfirmuserComponent } from './confirmuser.component';
-import { AuthService } from 'src/app/services/auth.service';
+import { MainlayoutComponent } from './mainlayout.component';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from 'src/app/modules/material/material.module';
+import { ProgressComponent } from 'src/app/modules/shared/components/progress/progress.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { SidenavigationComponent } from 'src/app/shared/common/sidenavigation/sidenavigation.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('ConfirmuserComponent', () => {
-    let component: ConfirmuserComponent;
-    let fixture: ComponentFixture<ConfirmuserComponent>;
+describe('MainlayoutComponent', () => {
+    let component: MainlayoutComponent;
+    let fixture: ComponentFixture<MainlayoutComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ConfirmuserComponent],
             imports: [
                 ApolloTestingModule,
                 RouterTestingModule,
-                BrowserAnimationsModule,
                 MaterialModule,
+                BrowserAnimationsModule,
                 HttpClientTestingModule,
             ],
-            providers: [AuthService],
+            declarations: [
+                MainlayoutComponent,
+                ProgressComponent,
+                SidenavigationComponent,
+            ],
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ConfirmuserComponent);
+        fixture = TestBed.createComponent(MainlayoutComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

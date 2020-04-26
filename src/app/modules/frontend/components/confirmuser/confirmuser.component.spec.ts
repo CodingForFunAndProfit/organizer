@@ -1,37 +1,33 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { ConfirmuserComponent } from './confirmuser.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/shared/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('LoginComponent', () => {
-    let component: LoginComponent;
-    let fixture: ComponentFixture<LoginComponent>;
-    let service: AuthService;
+describe('ConfirmuserComponent', () => {
+    let component: ConfirmuserComponent;
+    let fixture: ComponentFixture<ConfirmuserComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [LoginComponent],
+            declarations: [ConfirmuserComponent],
             imports: [
                 ApolloTestingModule,
                 RouterTestingModule,
                 BrowserAnimationsModule,
                 MaterialModule,
-                ReactiveFormsModule,
                 HttpClientTestingModule,
             ],
-            providers: [AuthService, FormBuilder],
+            providers: [AuthService],
         }).compileComponents();
-        service = TestBed.inject(AuthService);
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LoginComponent);
+        fixture = TestBed.createComponent(ConfirmuserComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

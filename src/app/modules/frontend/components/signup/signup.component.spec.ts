@@ -6,7 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SignupComponent', () => {

@@ -1,37 +1,37 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainlayoutComponent } from './mainlayout.component';
+import { LoginComponent } from './login.component';
+import { AuthService } from 'src/app/services/auth.service';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from 'src/app/shared/material/material.module';
-import { ProgressComponent } from 'src/app/components/progress/progress.component';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidenavigationComponent } from 'src/app/shared/common/sidenavigation/sidenavigation.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('MainlayoutComponent', () => {
-    let component: MainlayoutComponent;
-    let fixture: ComponentFixture<MainlayoutComponent>;
+describe('LoginComponent', () => {
+    let component: LoginComponent;
+    let fixture: ComponentFixture<LoginComponent>;
+    let service: AuthService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            declarations: [LoginComponent],
             imports: [
                 ApolloTestingModule,
                 RouterTestingModule,
-                MaterialModule,
                 BrowserAnimationsModule,
+                MaterialModule,
+                ReactiveFormsModule,
                 HttpClientTestingModule,
             ],
-            declarations: [
-                MainlayoutComponent,
-                ProgressComponent,
-                SidenavigationComponent,
-            ],
+            providers: [AuthService, FormBuilder],
         }).compileComponents();
+        service = TestBed.inject(AuthService);
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(MainlayoutComponent);
+        fixture = TestBed.createComponent(LoginComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

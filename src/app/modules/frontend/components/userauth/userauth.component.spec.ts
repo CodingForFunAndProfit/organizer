@@ -12,7 +12,7 @@ import {
     HttpClientTestingModule,
     HttpTestingController,
 } from '@angular/common/http/testing';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('UserauthComponent', () => {

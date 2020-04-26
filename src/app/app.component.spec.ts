@@ -3,9 +3,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material/material.module';
+import { MaterialModule } from './modules/material/material.module';
 
-import { ProgressComponent } from './components/progress/progress.component';
+import { ProgressComponent } from './modules/shared/components/progress/progress.component';
 import { SidenavigationComponent } from './shared/common/sidenavigation/sidenavigation.component';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';

@@ -4,7 +4,7 @@ import { ActionsComponent } from './actions.component';
 
 import { ActionsService } from 'src/app/services/actions.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 import { FormsModule } from '@angular/forms';
 
 describe('ActionsComponent', () => {

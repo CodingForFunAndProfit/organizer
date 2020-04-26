@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SidenavigationComponent } from './sidenavigation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from 'src/app/shared/material/material.module';
+import { MaterialModule } from 'src/app/modules/material/material.module';
 
 describe('SidenavigationComponent', () => {
     let component: SidenavigationComponent;

@@ -12,7 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RequestLoaderService } from './services/request-loader.service';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 
-import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingComponent } from './modules/shared/components/loading/loading.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 @NgModule({

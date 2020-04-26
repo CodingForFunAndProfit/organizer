@@ -1,10 +1,14 @@
-@import 'app/shared/material/themes/numberone.theme.scss';
-@import 'app/shared/material/themes/numbertwo.theme.scss';
+@import 'app/modules/material/themes/numberone.theme.scss';
+@import 'app/modules/material/themes/numbertwo.theme.scss';
 @import 'app/shared/common/sidenavigation/sidenavigation.component.theme.scss';
+@import 'app/modules/shared/components/circleloader/circleloader.component.theme.scss';
+@import 'app/modules/shared/components/dominoloader/dominoloader.component.theme.scss';
 
 @mixin custom-components-theme($theme) {
     @include sidenavigation-component-theme($theme);
     @include form-theme($theme);
+    @include circleloader-component-theme($theme);
+    @include dominoloader-component-theme($theme);
 }
 .numberone-dark {
     @include angular-material-theme($numberone-dark-theme);
