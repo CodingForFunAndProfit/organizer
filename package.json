@@ -12,7 +12,8 @@
         "test:gh": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCustom",
         "e2e:gh": "ng e2e --protractor-config=e2e/protractor-ci.conf.js",
         "build:ci": "npm run build:prod",
-        "cov": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCustom --code-coverage"
+        "cov": "ng test --no-watch --no-progress --browsers=ChromeHeadlessCustom --code-coverage",
+        "serve": "http-server -p 4201 -c-1 docs"
     },
     "private": true,
     "dependencies": {
@@ -27,6 +28,7 @@
         "@angular/platform-browser": "~9.1.1",
         "@angular/platform-browser-dynamic": "~9.1.1",
         "@angular/router": "~9.1.1",
+        "@angular/service-worker": "~9.1.1",
         "apollo-angular": "1.8.0",
         "apollo-angular-link-http": "1.9.0",
         "apollo-cache-inmemory": "^1.6.5",
@@ -48,6 +50,7 @@
         "@types/jasminewd2": "~2.0.8",
         "@types/node": "^13.11.1",
         "codelyzer": "^5.2.2",
+        "http-server": "^0.12.1",
         "jasmine-core": "~3.5.0",
         "jasmine-spec-reporter": "~5.0.1",
         "karma": "~5.0.1",
