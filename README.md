@@ -49,3 +49,33 @@ https://blog.w3radar.com/less-known-angular-features-probably-never-used/
     https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
 
 https://itnext.io/improve-your-angular-apps-performance-66032f63dc09
+
+https://www.chromium.org/developers/design-documents/form-styles-that-chromium-understands
+https://blog.angular-university.io/debug-rxjs/
+https://medium.com/angular-in-depth/total-guide-to-dynamic-angular-animations-that-can-be-toggled-at-runtime-be5bb6778a0a
+https://dev.to/johncarroll/angular-how-to-easily-display-loading-indicators-4359
+https://angular.io/guide/testing
+https://typegraphql.com/docs/validation.html
+https://www.apollographql.com/docs/apollo-server/data/errors/
+https://www.codemag.com/Article/1711021/Logging-in-Angular-Applications
+https://material.angular.io/components/snack-bar/overview
+https://www.learnrxjs.io/learn-rxjs/operators/creation/throw
+https://codecraft.tv/courses/angular/routing/parameterised-routes/
+https://angular.io/tutorial/toh-pt5
+https://www.apollographql.com/docs/angular/recipes/simple-example/
+https://blog.angular-university.io/how-to-build-angular2-apps-using-rxjs-observable-data-services-pitfalls-to-avoid/
+https://blog.angular-university.io/angular-2-rxjs-common-pitfalls/
+
+## how parts work
+
+Document each possible functionality of services/components/processes
+
+### Login
+
+-   show loginform
+-   disable button without valid input
+-   enable button with valid input
+-   show field hints with invalid input
+-   show login status (loading) when submitting
+-   forward to certain page after successful login
+-   show error message if something went wrong on the server side

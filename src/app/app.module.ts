@@ -13,9 +13,8 @@ import { RequestLoaderService } from './services/request-loader.service';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 
 import { LoadingComponent } from './components/loading/loading.component';
-import { BackendModule } from './backend/backend.module';
-import { FrontendModule } from './frontend/frontend.module';
-
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
     declarations: [AppComponent, LoadingComponent],
     imports: [
@@ -26,6 +25,7 @@ import { FrontendModule } from './frontend/frontend.module';
         FlexLayoutModule,
         GraphqlModule,
     ],
+
     providers: [
         RequestLoaderService,
         {
@@ -33,6 +33,12 @@ import { FrontendModule } from './frontend/frontend.module';
             useClass: RequestInterceptor,
             multi: true,
         },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true,
+        },
+        CookieService,
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

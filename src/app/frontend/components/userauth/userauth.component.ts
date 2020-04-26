@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UserAuthComponent implements OnInit {
     constructor(private router: Router, private authService: AuthService) {
         if (this.authService.currentUserValue) {
-            this.router.navigate(['/dashboard']);
+            // this.router.navigate(['/dashboard']);
         }
     }
 

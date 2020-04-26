@@ -6,10 +6,19 @@ import { Apollo, QueryRef } from 'apollo-angular';
 
 import { User } from '../entities/user/user.entity';
 import { LogService } from './logger/log.service';
+import { CookieService } from 'ngx-cookie-service';
 
 const loginMutation = gql`
     mutation login($email: String!, $password: String!) {
-        login(email: $email, password: $password)
+        login(email: $email, password: $password) {
+            accesToken
+            msg
+            login
+            user {
+                id
+                email
+            }
+        }
     }
 `;
 
@@ -17,8 +26,15 @@ interface LoginData {
     email: string;
     password: string;
 }
-interface LoginResponse {
+
+interface LoginResult {
+    accessToken: string;
+    msg: string;
     login: string;
+    user: User;
+}
+interface LoginResponse {
+    login: LoginResult;
 }
 
 const meQuery = gql`
@@ -65,14 +81,32 @@ export class AuthService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     private query: QueryRef<any>;
-    // confirmed: Observable<boolean>;
+
     private _confirmed: BehaviorSubject<boolean> = new BehaviorSubject(false);
     public confirmed: Observable<boolean> = this._confirmed.asObservable();
+
+    private _loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public loading: Observable<boolean> = this._loading.asObservable();
+
+    private _isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
+        false
+    );
+    public isAuthenticated: Observable<
+        boolean
+    > = this._isAuthenticated.asObservable();
+
+    private _loginfailure: BehaviorSubject<boolean> = new BehaviorSubject(
+        false
+    );
+    public loginfailure: Observable<
+        boolean
+    > = this._loginfailure.asObservable();
 
     constructor(
         private apollo: Apollo,
         private router: Router,
-        private log: LogService
+        private log: LogService,
+        private cookieService: CookieService
     ) {
         this.currentUserSubject = new BehaviorSubject<User>(
             JSON.parse(localStorage.getItem('currentUser'))
@@ -82,17 +116,18 @@ export class AuthService {
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
-    public async login(
-        email: string,
-        password: string
-    ): Promise<string | null> {
+
+    public async login(email: string, password: string): Promise<void> {
         this.log.info('Login request');
         if (!(email && email.length > 0)) {
             this.log.warn('Email null or empty.');
+            return;
         }
         if (!(password && password.length > 0)) {
             this.log.warn('Password null or empty.');
+            return;
         }
+        this._loading.next(true);
         this.apollo
             .mutate<LoginResponse>({
                 mutation: loginMutation,
@@ -103,21 +138,32 @@ export class AuthService {
             })
             .subscribe(
                 (response) => {
+                    this._loading.next(false);
                     const login = response.data.login;
-                    if (login) {
-                        localStorage.setItem('token', response.data.login);
-                        this.getUser();
-                        this.log.info('Authenticated');
-                        return response.data.login;
+
+                    if (login.login === 'success') {
+                        if (login.user) {
+                            localStorage.setItem('token', login.accessToken);
+                            localStorage.setItem(
+                                'currentUser',
+                                JSON.stringify(login.user)
+                            );
+                            this.currentUserSubject.next(login.user);
+                            this.log.info('Authenticated');
+                            this._isAuthenticated.next(true);
+                        } else {
+                        }
                     } else {
                         this.log.error('Authentication failed.');
+                        console.error(response);
                     }
                 },
                 (error) => {
                     this.log.error('AuthService -> login', error);
+                    this._loading.next(false);
                 }
             );
-        return null;
+        return;
     }
 
     public logout() {
@@ -130,14 +176,15 @@ export class AuthService {
                     const logout = response.data.logout;
                     if (logout) {
                         this.log.info('User logged out');
+                        this._isAuthenticated.next(false);
                     }
                     // else -> possible?
-
                     // delete local authentication data
+                    this.cookieService.delete('refreshtoken', '/', 'localhost');
                     localStorage.removeItem('currentUser');
                     localStorage.removeItem('token');
                     this.currentUserSubject.next(null);
-                    this.router.navigate(['/auth']);
+                    this.router.navigate(['/']);
                 },
                 (error) => {
                     this.log.error('AuthService -> logout', error);
@@ -157,7 +204,6 @@ export class AuthService {
                     JSON.stringify(response.data.me)
                 );
                 this.currentUserSubject.next(response.data.me);
-                this.router.navigate(['/dashboard']);
             },
             (error) => {
                 console.log('there was an error', error);

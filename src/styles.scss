@@ -28,6 +28,7 @@ $custom-typography: mat-typography-config(
 );
 @include mat-core($custom-typography);
 */
+$headerFontFamily: 'Poiret One', cursive;
 html,
 body {
     height: 100%;
@@ -59,12 +60,18 @@ body {
 }
 .formCard {
     width: 320px;
+    height: 190px;
 }
 .formwrapper {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    h1 {
+        font-family: $headerFontFamily;
+        font-size: 45px;
+        color: white;
+    }
 }
 ::ng-deep .mat-tab-body-content {
     overflow: visible !important;

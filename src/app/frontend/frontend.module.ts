@@ -10,6 +10,7 @@ import { UserAuthComponent } from './components/userauth/userauth.component';
 import { ConfirmuserComponent } from './components/confirmuser/confirmuser.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../modules/shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         FormsModule,
         ReactiveFormsModule,
         FlexLayoutModule,
+        SharedModule,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
