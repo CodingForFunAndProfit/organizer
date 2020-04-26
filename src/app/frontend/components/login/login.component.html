@@ -2,7 +2,7 @@
     class="formwrapper"
     fxLayout="column"
     @formdiv
-    *ngIf="!(isLoading | async)"
+    *ngIf="(isLoading | async) === false"
 >
     <h1>Login</h1>
     <mat-card class="formCard">
