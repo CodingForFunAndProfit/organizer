@@ -3,12 +3,14 @@
 @import 'app/shared/common/sidenavigation/sidenavigation.component.theme.scss';
 @import 'app/modules/shared/components/circleloader/circleloader.component.theme.scss';
 @import 'app/modules/shared/components/dominoloader/dominoloader.component.theme.scss';
+@import 'app/modules/frontend/components/login/login.component.theme.scss';
 
 @mixin custom-components-theme($theme) {
     @include sidenavigation-component-theme($theme);
     @include form-theme($theme);
     @include circleloader-component-theme($theme);
     @include dominoloader-component-theme($theme);
+    @include login-component-theme($theme);
 }
 .numberone-dark {
     @include angular-material-theme($numberone-dark-theme);
@@ -64,7 +66,6 @@ body {
 }
 .formCard {
     width: 320px;
-    height: 190px;
 }
 .formwrapper {
     height: 100vh;

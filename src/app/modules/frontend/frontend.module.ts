@@ -6,7 +6,6 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserAuthComponent } from './components/userauth/userauth.component';
 import { ConfirmuserComponent } from './components/confirmuser/confirmuser.component';
 import { HomeComponent } from './components/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,7 +16,6 @@ import { SharedModule } from '../shared/shared.module';
         SimplelayoutComponent,
         SignupComponent,
         LoginComponent,
-        UserAuthComponent,
         ConfirmuserComponent,
         HomeComponent,
     ],

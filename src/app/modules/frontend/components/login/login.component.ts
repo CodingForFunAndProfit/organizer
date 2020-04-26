@@ -5,14 +5,7 @@ import {
     Validators,
     FormControl,
 } from '@angular/forms';
-import {
-    trigger,
-    transition,
-    animate,
-    style,
-    AnimationEvent,
-    state,
-} from '@angular/animations';
+import { trigger, transition, animate, style } from '@angular/animations';
 import { AuthService } from 'src/app/services/auth.service';
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';

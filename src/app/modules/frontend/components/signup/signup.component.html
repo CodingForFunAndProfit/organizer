@@ -1,45 +1,141 @@
-<form [formGroup]="signupForm" class="card-form" (ngSubmit)="signup()">
-    <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input
-            matInput
-            type="email"
-            formControlName="email"
-            autocomplete="username"
-        />
-        <mat-error *ngIf="email.errors?.required">
-            Email is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="email.errors?.email && !email.errors?.required">
-            Please enter a valid email address
-        </mat-error>
-        <mat-icon matSuffix>email</mat-icon>
-    </mat-form-field>
+<div
+    class="formwrapper"
+    fxLayout="column"
+    @formdiv
+    *ngIf="(isLoading | async) === false"
+>
+    <h1>Signup</h1>
+    <mat-card class="formCard">
+        <mat-card-content>
+            <div>
+                <form
+                    [formGroup]="signupForm"
+                    class="card-form"
+                    (ngSubmit)="signup()"
+                >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input
+                            matInput
+                            type="email"
+                            formControlName="email"
+                            autocomplete="username"
+                        />
+                        <mat-error *ngIf="email.errors?.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="
+                                email.errors?.email && !email.errors?.required
+                            "
+                        >
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input
-            matInput
-            type="password"
-            formControlName="password"
-            autocomplete="new-password"
-        />
-        <mat-error *ngIf="password.errors?.required">
-            Password is <strong>required</strong>
-        </mat-error>
-        <mat-error *ngIf="password.errors?.minlength">
-            Please enter a password with a minimum of 8 characters
-        </mat-error>
-        <mat-icon matSuffix>visibility_off</mat-icon>
-    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <input
+                            matInput
+                            type="password"
+                            formControlName="password"
+                            autocomplete="new-password"
+                        />
+                        <mat-error *ngIf="password.errors?.required">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="password.errors?.minlength">
+                            Please enter a password with a minimum of 8
+                            characters
+                        </mat-error>
+                        <mat-icon matSuffix>visibility_off</mat-icon>
+                    </mat-form-field>
 
-    <button
-        mat-raised-button
-        color="accent"
-        class="fw"
-        type="submit"
-        [disabled]="!signupForm.valid"
-    >
-        Signup
-    </button>
-</form>
+                    <button
+                        mat-raised-button
+                        color="accent"
+                        class="fw"
+                        type="submit"
+                        [disabled]="!signupForm.valid"
+                    >
+                        Signup
+                    </button>
+                </form>
+            </div>
+            <!--
+                <form
+                    [formGroup]="loginForm"
+                    (ngSubmit)="login()"
+                    class="card-form"
+                >
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input
+                            matInput
+                            type="email"
+                            formControlName="email"
+                            autocomplete="username"
+                        />
+                        <mat-error *ngIf="email.errors?.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error
+                            *ngIf="
+                                email.errors?.email && !email.errors?.required
+                            "
+                        >
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter your password</mat-label>
+                        <input
+                            matInput
+                            type="password"
+                            formControlName="password"
+                            autocomplete="current-password"
+                        />
+                        <mat-error *ngIf="password.errors?.required">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="password.errors?.minlength">
+                            Please enter a password with a minimum of 8
+                            characters
+                        </mat-error>
+                        <mat-icon matSuffix>visibility_off</mat-icon>
+                    </mat-form-field>
+
+                    <button
+                        mat-raised-button
+                        color="accent"
+                        class="fw"
+                        type="submit"
+                    >
+                        Login
+                    </button>
+                </form>
+            </div>
+
+            <div class="cardsection">
+                <p>No account yet? <a routerLink="/signup">Signup here</a></p>
+            </div>
+            <div class="cardsection">
+                <p>
+                    Forgot your password?
+                    <a routerLink="/forgotpassword">Click here</a>
+                </p>
+            </div>
+            -->
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<app-circleloader @loader *ngIf="isLoading | async"></app-circleloader>
+<!--
+<div *ngIf="showSuccess" class="successmsg">Success</div>
+<div *ngIf="showFailure" class="failuremsg">Failure</div>
+<app-dominoloader *ngIf="showSpinner"></app-dominoloader>
+-->
