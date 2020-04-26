@@ -1,0 +1,106 @@
+{
+  "configVersion": 1,
+  "timestamp": 1587945119588,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/1-es2015.8a3e9f7e28b7593603c9.js",
+        "/1-es5.8a3e9f7e28b7593603c9.js",
+        "/6-es2015.dbe5391c34803887ec0e.js",
+        "/6-es5.dbe5391c34803887ec0e.js",
+        "/7-es2015.960ce126e6176a452298.js",
+        "/7-es5.960ce126e6176a452298.js",
+        "/index.html",
+        "/main-es2015.24e5c0b73a336ca03ff7.js",
+        "/main-es5.24e5c0b73a336ca03ff7.js",
+        "/manifest.webmanifest",
+        "/polyfills-es2015.ae2ff135b6a0a9cb55e7.js",
+        "/polyfills-es5.736f2d9faec4ce67a92c.js",
+        "/runtime-es2015.e6cb34d8edf5dcce338d.js",
+        "/runtime-es5.e6cb34d8edf5dcce338d.js",
+        "/styles.cc13b5db41bc018bf022.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/default.settings.json",
+        "/assets/icon/android-chrome-192x192.png",
+        "/assets/icon/android-chrome-512x512.png",
+        "/assets/icon/apple-touch-icon.png",
+        "/assets/icon/favicon-16x16.png",
+        "/assets/icon/favicon-32x32.png",
+        "/assets/icon/favicon.ico",
+        "/assets/icon/site.webmanifest",
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/1-es2015.8a3e9f7e28b7593603c9.js": "ba41938e723db3bc8070f4184eb8f4695c24c1d3",
+    "/1-es5.8a3e9f7e28b7593603c9.js": "6c99741591f75c3fb7a65e75c6d36dac69c7465f",
+    "/6-es2015.dbe5391c34803887ec0e.js": "0e51b1a0a81a6ac107e6c0a72bdd83dcfb5327f4",
+    "/6-es5.dbe5391c34803887ec0e.js": "ffba0a916a548b4c7dbdd04ffa871b9a63c38508",
+    "/7-es2015.960ce126e6176a452298.js": "0e66775570bc5031ba34c288cc2b14e9163f3f65",
+    "/7-es5.960ce126e6176a452298.js": "e5d8119b48e30f9b5da50472bd87e7e83197d71d",
+    "/assets/default.settings.json": "b8998a4153a9e183519aa0d9baec0d522b199145",
+    "/assets/icon/android-chrome-192x192.png": "0f6b85381cfa63653dd87b2303d997b98ccd5e59",
+    "/assets/icon/android-chrome-512x512.png": "649f53347f4dd2d272fab539f0ad63dc50defd46",
+    "/assets/icon/apple-touch-icon.png": "8e1d8c12a298dc13913d21501fa65f57760cb721",
+    "/assets/icon/favicon-16x16.png": "5566ac8718f6c68b154b2eeceedfbe410021f563",
+    "/assets/icon/favicon-32x32.png": "1acce55a1de6e2fa28e68d8eb2c3830ce4ed5a8d",
+    "/assets/icon/favicon.ico": "e71431a2434c25112f8199aceaf5c16cbca10916",
+    "/assets/icon/site.webmanifest": "bf31baf91bdd2fcde24a45e3f2a1be33733c6f69",
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/index.html": "0809e5256d7e01cf6c3f8a6e7736630445398dfa",
+    "/main-es2015.24e5c0b73a336ca03ff7.js": "1df092169f4e0433d2d9c1a77e2c61c871d264de",
+    "/main-es5.24e5c0b73a336ca03ff7.js": "cecf0cec392069b64701414416bb922bd4e21f86",
+    "/manifest.webmanifest": "c8c379e8bda7f652066c73d3de39368294e7a5d1",
+    "/polyfills-es2015.ae2ff135b6a0a9cb55e7.js": "15a133b6cbb459a66fcd2e75f6aa25782e5d79c4",
+    "/polyfills-es5.736f2d9faec4ce67a92c.js": "5dd6fedcaa41dc088d23f18db14c9dc30b90a4db",
+    "/runtime-es2015.e6cb34d8edf5dcce338d.js": "b13e0c4a6476eb5e94b9e9ac247bda149510918e",
+    "/runtime-es5.e6cb34d8edf5dcce338d.js": "c8be0ee2b4d0ec0e1b57f23f985a41421afcf3eb",
+    "/styles.cc13b5db41bc018bf022.css": "a89aba5b943a18d913ae746fae0c06bb89575a8e"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
