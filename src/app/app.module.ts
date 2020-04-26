@@ -15,6 +15,8 @@ import { RequestInterceptor } from './interceptors/request.interceptor';
 import { LoadingComponent } from './modules/shared/components/loading/loading.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CookieService } from 'ngx-cookie-service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
     declarations: [AppComponent, LoadingComponent],
     imports: [
@@ -24,6 +26,7 @@ import { CookieService } from 'ngx-cookie-service';
         HttpClientModule,
         FlexLayoutModule,
         GraphqlModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
 
     providers: [
