@@ -31,7 +31,10 @@
                         >
                             Please enter a valid email address
                         </mat-error>
-                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-icon matSuffix *ngIf="!email.valid"
+                            >email</mat-icon
+                        >
+                        <mat-icon matSuffix *ngIf="email.valid">done</mat-icon>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
@@ -49,7 +52,12 @@
                             Please enter a password with a minimum of 8
                             characters
                         </mat-error>
-                        <mat-icon matSuffix>visibility_off</mat-icon>
+                        <mat-icon matSuffix *ngIf="!password.valid"
+                            >visibility_off</mat-icon
+                        >
+                        <mat-icon matSuffix *ngIf="password.valid"
+                            >done</mat-icon
+                        >
                     </mat-form-field>
 
                     <button

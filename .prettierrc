@@ -8,5 +8,5 @@
     "bracketSpacing": true,
     "html.format.wrapAttributes": "force",
     "html.format.enable": true,
-    "html.format.wrapLineLength": 110
+    "html.format.wrapLineLength": 200
 }
