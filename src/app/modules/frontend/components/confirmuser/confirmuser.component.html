@@ -4,17 +4,13 @@
             <ng-template #checking>
                 <div class="loginloader">
                     Confirming....
-                    <mat-progress-bar [mode]="'indeterminate'">
-                    </mat-progress-bar>
+                    <mat-progress-bar [mode]="'indeterminate'"> </mat-progress-bar>
                 </div>
             </ng-template>
 
-            <div
-                class="loginloader"
-                *ngIf="authService.confirmed | async; else checking"
-            >
+            <div class="loginloader" @fade *ngIf="authService.confirmed | async; else checking">
                 Your account is activated. You can now login.
-                <a routerLink="/auth" mat-raised-button color="accent">Login</a>
+                <a routerLink="/login" mat-raised-button color="accent">Login</a>
             </div>
         </mat-card-content>
     </mat-card>
