@@ -88,29 +88,17 @@ export class AuthService {
     private _loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
     public loading: Observable<boolean> = this._loading.asObservable();
 
-    private _isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(
-        false
-    );
-    public isAuthenticated: Observable<
-        boolean
-    > = this._isAuthenticated.asObservable();
+    private _isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public isAuthenticated: Observable<boolean> = this._isAuthenticated.asObservable();
 
-    private _loginfailure: BehaviorSubject<boolean> = new BehaviorSubject(
-        false
-    );
-    public loginfailure: Observable<
-        boolean
-    > = this._loginfailure.asObservable();
+    private _loginfailure: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public loginfailure: Observable<boolean> = this._loginfailure.asObservable();
 
-    constructor(
-        private apollo: Apollo,
-        private router: Router,
-        private log: LogService,
-        private cookieService: CookieService
-    ) {
-        this.currentUserSubject = new BehaviorSubject<User>(
-            JSON.parse(localStorage.getItem('currentUser'))
-        );
+    private _isRegistered: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public isRegistered: Observable<boolean> = this._isRegistered.asObservable();
+
+    constructor(private apollo: Apollo, private router: Router, private log: LogService, private cookieService: CookieService) {
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
     public get currentUserValue(): User {
@@ -144,10 +132,7 @@ export class AuthService {
                     if (login.login === 'success') {
                         if (login.user) {
                             localStorage.setItem('token', login.accessToken);
-                            localStorage.setItem(
-                                'currentUser',
-                                JSON.stringify(login.user)
-                            );
+                            localStorage.setItem('currentUser', JSON.stringify(login.user));
                             this.currentUserSubject.next(login.user);
                             this.log.info('Authenticated');
                             this._isAuthenticated.next(true);
@@ -199,10 +184,7 @@ export class AuthService {
 
         this.query.valueChanges.subscribe(
             (response) => {
-                localStorage.setItem(
-                    'currentUser',
-                    JSON.stringify(response.data.me)
-                );
+                localStorage.setItem('currentUser', JSON.stringify(response.data.me));
                 this.currentUserSubject.next(response.data.me);
             },
             (error) => {
@@ -243,19 +225,25 @@ export class AuthService {
         if (!(password && password.length > 0)) {
             this.log.warn('Password null or empty.');
         }
+        this._loading.next(true);
         this.apollo
             .mutate<SignupUserResponse>({
                 mutation: signupUserMutation,
                 variables: {
-                    email,
-                    password,
+                    input: {
+                        email,
+                        password,
+                    },
                 },
             })
             .subscribe(
                 (response) => {
+                    this._loading.next(false);
                     const register = response.data.UserRegister;
+                    this.log.warn(register);
                     if (register) {
                         this.log.info('User got mail to confirm his account');
+                        this._isRegistered.next(true);
                     } else {
                         this.log.error('Error during registration.');
                     }
@@ -263,6 +251,7 @@ export class AuthService {
                 },
                 (error) => {
                     this.log.error('AuthService -> signupUser', error);
+                    this._loading.next(false);
                 }
             );
         return null;

@@ -1,84 +1,43 @@
-<div
-    class="formwrapper"
-    fxLayout="column"
-    @formdiv
-    *ngIf="(isLoading | async) === false"
->
+<div class="formwrapper" fxLayout="column" @fade *ngIf="(isLoading | async) === false">
     <h1>Login</h1>
     <mat-card class="formCard">
         <mat-card-content>
             <div>
-                <form
-                    [formGroup]="loginForm"
-                    (ngSubmit)="login()"
-                    class="card-form"
-                >
+                <form [formGroup]="loginForm" (ngSubmit)="login()" class="card-form">
                     <mat-form-field appearance="fill">
                         <mat-label>Email</mat-label>
-                        <input
-                            matInput
-                            type="email"
-                            formControlName="email"
-                            autocomplete="username"
-                        />
-                        <mat-error *ngIf="email.errors?.required">
-                            Email is <strong>required</strong>
-                        </mat-error>
-                        <mat-error
-                            *ngIf="
-                                email.errors?.email && !email.errors?.required
-                            "
-                        >
+                        <input matInput type="email" formControlName="email" autocomplete="username" />
+                        <mat-error *ngIf="email.errors?.required"> Email is <strong>required</strong> </mat-error>
+                        <mat-error *ngIf="email.errors?.email && !email.errors?.required">
                             Please enter a valid email address
                         </mat-error>
-                        <mat-icon matSuffix *ngIf="!email.valid"
-                            >email</mat-icon
-                        >
+                        <mat-icon matSuffix *ngIf="!email.valid">email</mat-icon>
                         <mat-icon matSuffix *ngIf="email.valid">done</mat-icon>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
                         <mat-label>Enter your password</mat-label>
-                        <input
-                            matInput
-                            type="password"
-                            formControlName="password"
-                            autocomplete="current-password"
-                        />
-                        <mat-error *ngIf="password.errors?.required">
-                            Password is <strong>required</strong>
-                        </mat-error>
+                        <input matInput type="password" formControlName="password" autocomplete="current-password" />
+                        <mat-error *ngIf="password.errors?.required"> Password is <strong>required</strong> </mat-error>
                         <mat-error *ngIf="password.errors?.minlength">
-                            Please enter a password with a minimum of 8
-                            characters
+                            Please enter a password with a minimum of 8 characters
                         </mat-error>
-                        <mat-icon matSuffix *ngIf="!password.valid"
-                            >visibility_off</mat-icon
-                        >
-                        <mat-icon matSuffix *ngIf="password.valid"
-                            >done</mat-icon
-                        >
+                        <mat-icon matSuffix *ngIf="!password.valid">visibility_off</mat-icon>
+                        <mat-icon matSuffix *ngIf="password.valid">done</mat-icon>
                     </mat-form-field>
 
-                    <button
-                        mat-raised-button
-                        color="accent"
-                        class="fw"
-                        type="submit"
-                    >
+                    <button mat-raised-button color="accent" class="fw" type="submit">
                         Login
                     </button>
                 </form>
             </div>
 
-            <div class="cardsection">
-                No account yet? <a routerLink="/signup">Signup here</a>
-            </div>
+            <div class="cardsection">No account yet? <a routerLink="/signup">Signup here</a></div>
         </mat-card-content>
     </mat-card>
 </div>
 
-<app-circleloader @loader *ngIf="isLoading | async"></app-circleloader>
+<app-circleloader *ngIf="isLoading | async"></app-circleloader>
 <!--
 <div *ngIf="showSuccess" class="successmsg">Success</div>
 <div *ngIf="showFailure" class="failuremsg">Failure</div>
