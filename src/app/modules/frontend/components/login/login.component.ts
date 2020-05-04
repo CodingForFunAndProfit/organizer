@@ -37,6 +37,11 @@ export class LoginComponent implements OnInit {
             password: this.password,
         });
         this.isLoading = this.authService.loading;
+        this.isLoading.subscribe((isLoading) => {
+            if (isLoading) {
+                this.showForm = false;
+            }
+        });
 
         this.authService.isAuthenticated.subscribe((isAuthenticated) => {
             if (isAuthenticated) {

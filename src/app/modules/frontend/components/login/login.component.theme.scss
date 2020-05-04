@@ -36,10 +36,10 @@
     .cardsection {
         padding-top: 20px;
         a {
-            color: mat-color($primary);
+            color: mat-color($accent);
 
             &:hover {
-                color: mat-color($accent);
+                color: mat-color($primary);
             }
         }
     }

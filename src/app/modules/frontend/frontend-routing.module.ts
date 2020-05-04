@@ -4,6 +4,8 @@ import { ConfirmuserComponent } from './components/confirmuser/confirmuser.compo
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { ChangePasswordComponent } from './components/changepassword/changepassword.component';
 
 const routes: Routes = [
     {
@@ -17,6 +19,14 @@ const routes: Routes = [
     {
         path: 'signup',
         component: SignupComponent,
+    },
+    {
+        path: 'forgotpassword',
+        component: ForgotPasswordComponent,
+    },
+    {
+        path: 'changepassword/:token',
+        component: ChangePasswordComponent,
     },
     {
         path: 'confirmuser/:confirmationUuid',

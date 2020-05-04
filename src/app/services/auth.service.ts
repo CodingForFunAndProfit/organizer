@@ -74,6 +74,24 @@ const signupUserMutation = gql`
         UserRegister(input: $input)
     }
 `;
+
+interface ForgotPasswordResponse {
+    forgotPassword: boolean;
+}
+const forgotPasswordMutation = gql`
+    mutation forgotPassword($email: String!) {
+        forgotPassword(email: $email)
+    }
+`;
+
+interface ChangePasswordResponse {
+    changePassword: boolean;
+}
+const changePasswordMutation = gql`
+    mutation changePassword($token: String!, $password: String!) {
+        changePassword(token: $token, password: $password)
+    }
+`;
 @Injectable({
     providedIn: 'root',
 })
@@ -96,6 +114,12 @@ export class AuthService {
 
     private _isRegistered: BehaviorSubject<boolean> = new BehaviorSubject(false);
     public isRegistered: Observable<boolean> = this._isRegistered.asObservable();
+
+    private _isChanged: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public isChanged: Observable<boolean> = this._isChanged.asObservable();
+
+    private _isEmailSent: BehaviorSubject<boolean> = new BehaviorSubject(false);
+    public isEmailSent: Observable<boolean> = this._isEmailSent.asObservable();
 
     constructor(private apollo: Apollo, private router: Router, private log: LogService, private cookieService: CookieService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -240,7 +264,7 @@ export class AuthService {
                 (response) => {
                     this._loading.next(false);
                     const register = response.data.UserRegister;
-                    this.log.warn(register);
+                    // this.log.warn(register);
                     if (register) {
                         this.log.info('User got mail to confirm his account');
                         this._isRegistered.next(true);
@@ -248,6 +272,79 @@ export class AuthService {
                         this.log.error('Error during registration.');
                     }
                     return register;
+                },
+                (error) => {
+                    this.log.error('AuthService -> signupUser', error);
+                    this._loading.next(false);
+                }
+            );
+        return null;
+    }
+
+    public forgotPassword(email: string): Promise<boolean> {
+        this.log.info('Forgot Password Request');
+        if (!(email && email.length > 0)) {
+            this.log.warn('Email null or empty.');
+        }
+        this._isEmailSent.next(false);
+        this._loading.next(true);
+        this.apollo
+            .mutate<ForgotPasswordResponse>({
+                mutation: forgotPasswordMutation,
+                variables: {
+                    email,
+                },
+            })
+            .subscribe(
+                (response) => {
+                    this._loading.next(false);
+                    const forgotPassword = response.data.forgotPassword;
+
+                    if (forgotPassword) {
+                        this.log.info('User got mail to set a new password');
+                        this._isEmailSent.next(true);
+                    } else {
+                        this.log.error('Error during forgot password process.');
+                    }
+                    return forgotPassword;
+                },
+                (error) => {
+                    this.log.error('AuthService -> forgotPassword', error);
+                    this._loading.next(false);
+                }
+            );
+        return null;
+    }
+
+    public changePassword(token: string, password: string): Promise<boolean> {
+        this.log.info('Change password request');
+        if (!(token && token.length > 0)) {
+            this.log.warn('Token null or empty.');
+        }
+        if (!(password && password.length > 0)) {
+            this.log.warn('Password null or empty.');
+        }
+        this._loading.next(true);
+        this.apollo
+            .mutate<ChangePasswordResponse>({
+                mutation: changePasswordMutation,
+                variables: {
+                    token,
+                    password,
+                },
+            })
+            .subscribe(
+                (response) => {
+                    this._loading.next(false);
+                    const change = response.data.changePassword;
+                    // this.log.warn(register);
+                    if (change) {
+                        this.log.info('Password got changed');
+                        this._isChanged.next(true);
+                    } else {
+                        this.log.error('Error during registration.');
+                    }
+                    return change;
                 },
                 (error) => {
                     this.log.error('AuthService -> signupUser', error);

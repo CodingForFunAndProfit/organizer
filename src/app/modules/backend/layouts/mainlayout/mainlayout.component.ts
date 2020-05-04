@@ -3,6 +3,7 @@ import { User } from 'src/app/entities/user/user.entity';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { SettingsService } from 'src/app/services/settings.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-mainlayout',
@@ -19,7 +20,8 @@ export class MainlayoutComponent implements OnInit {
     constructor(
         public overlayContainer: OverlayContainer,
         private settings: SettingsService,
-        private authService: AuthService
+        private authService: AuthService,
+        private title: Title
     ) {
         this.settings.theme.subscribe((theme) => {
             this.theme = theme;
@@ -34,7 +36,9 @@ export class MainlayoutComponent implements OnInit {
         this.authService.currentUser.subscribe((user) => (this.user = user));
     }
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.title.setTitle('Organizer: Get it done.');
+    }
 
     toggleTheme() {
         this.settings.changeLight(!this.dark);
@@ -42,9 +46,7 @@ export class MainlayoutComponent implements OnInit {
     changeClass() {
         const mode = this.dark ? 'dark' : 'light';
         const themeClass = this.theme + '-' + mode;
-        this.overlayContainer
-            .getContainerElement()
-            .classList.remove(this.activeThemeCssClass);
+        this.overlayContainer.getContainerElement().classList.remove(this.activeThemeCssClass);
         this.overlayContainer.getContainerElement().classList.add(themeClass);
         this.activeThemeCssClass = themeClass;
     }

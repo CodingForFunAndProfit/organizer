@@ -10,6 +10,8 @@ import { ConfirmuserComponent } from './components/confirmuser/confirmuser.compo
 import { HomeComponent } from './components/home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
+import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { ChangePasswordComponent } from './components/changepassword/changepassword.component';
 
 @NgModule({
     declarations: [
@@ -18,16 +20,10 @@ import { SharedModule } from '../shared/shared.module';
         LoginComponent,
         ConfirmuserComponent,
         HomeComponent,
+        ForgotPasswordComponent,
+        ChangePasswordComponent,
     ],
-    imports: [
-        CommonModule,
-        FrontendRoutingModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        FlexLayoutModule,
-        SharedModule,
-    ],
+    imports: [CommonModule, FrontendRoutingModule, MaterialModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, SharedModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FrontendModule {}

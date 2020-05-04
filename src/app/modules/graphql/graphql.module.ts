@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
             useFactory: (httpLink: HttpLink) => {
                 const link = httpLink.create({
                     uri: environment.apiurl,
+                    withCredentials: true,
                 });
                 const auth = setContext((_, { headers }) => {
                     const token = localStorage.getItem('token');
@@ -30,6 +31,7 @@ import { environment } from 'src/environments/environment';
                     cache: new InMemoryCache(),
                     link: auth.concat(link),
                     connectToDevTools: true,
+                    credentials: 'include',
                 };
             },
             deps: [HttpLink],

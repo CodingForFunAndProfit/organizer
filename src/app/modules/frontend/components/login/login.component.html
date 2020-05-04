@@ -1,4 +1,4 @@
-<div class="formwrapper" fxLayout="column" @fade *ngIf="(isLoading | async) === false">
+<div class="formwrapper" fxLayout="column" @fade *ngIf="showForm">
     <h1>Login</h1>
     <mat-card class="formCard">
         <mat-card-content>
@@ -16,7 +16,7 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="fill">
-                        <mat-label>Enter your password</mat-label>
+                        <mat-label>Password</mat-label>
                         <input matInput type="password" formControlName="password" autocomplete="current-password" />
                         <mat-error *ngIf="password.errors?.required"> Password is <strong>required</strong> </mat-error>
                         <mat-error *ngIf="password.errors?.minlength">
@@ -26,12 +26,12 @@
                         <mat-icon matSuffix *ngIf="password.valid">done</mat-icon>
                     </mat-form-field>
 
-                    <button mat-raised-button color="accent" class="fw" type="submit">
+                    <button mat-raised-button color="accent" class="fw" type="submit" [disabled]="!loginForm.valid">
                         Login
                     </button>
                 </form>
             </div>
-
+            <div class="cardsection"><a routerLink="/forgotpassword">Forgot your password?</a></div>
             <div class="cardsection">No account yet? <a routerLink="/signup">Signup here</a></div>
         </mat-card-content>
     </mat-card>

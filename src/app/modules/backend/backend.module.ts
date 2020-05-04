@@ -12,6 +12,7 @@ import { ProgressComponent } from '../shared/components/progress/progress.compon
 import { SettingsComponent } from './components/settings/settings.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { UsersComponent } from './components/users/users.component';
+import { GooeynavComponent } from './components/gooeynav/gooeynav.component';
 
 @NgModule({
     declarations: [
@@ -22,6 +23,7 @@ import { UsersComponent } from './components/users/users.component';
         SettingsComponent,
         ActionsComponent,
         UsersComponent,
+        GooeynavComponent,
     ],
     imports: [
         CommonModule,

@@ -4,6 +4,7 @@
 @import 'app/modules/shared/components/circleloader/circleloader.component.theme.scss';
 @import 'app/modules/shared/components/dominoloader/dominoloader.component.theme.scss';
 @import 'app/modules/frontend/components/login/login.component.theme.scss';
+@import 'app/modules/backend/components/gooeynav/gooeynav.component.theme.scss';
 
 @mixin custom-components-theme($theme) {
     @include sidenavigation-component-theme($theme);
@@ -11,6 +12,7 @@
     @include circleloader-component-theme($theme);
     @include dominoloader-component-theme($theme);
     @include login-component-theme($theme);
+    @include gooeynav-component-theme($theme);
 }
 .numberone-dark {
     @include angular-material-theme($numberone-dark-theme);
