@@ -1,15 +1,13 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SimplelayoutComponent } from './layouts/simplelayout/simplelayout.component';
+import { SharedModule } from '../shared/shared.module';
+
 import { FrontendRoutingModule } from './frontend-routing.module';
-import { MaterialModule } from '../material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { SimplelayoutComponent } from './layouts/simplelayout/simplelayout.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ConfirmuserComponent } from './components/confirmuser/confirmuser.component';
 import { HomeComponent } from './components/home/home.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { SharedModule } from '../shared/shared.module';
 import { ForgotPasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { ChangePasswordComponent } from './components/changepassword/changepassword.component';
 
@@ -23,7 +21,7 @@ import { ChangePasswordComponent } from './components/changepassword/changepassw
         ForgotPasswordComponent,
         ChangePasswordComponent,
     ],
-    imports: [CommonModule, FrontendRoutingModule, MaterialModule, FormsModule, ReactiveFormsModule, FlexLayoutModule, SharedModule],
+    imports: [SharedModule, FrontendRoutingModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class FrontendModule {}

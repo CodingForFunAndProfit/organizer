@@ -1,9 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 import { BackendRoutingModule } from './backend-routing.module';
-import { MaterialModule } from '../material/material.module';
 
 import { MainlayoutComponent } from './layouts/mainlayout/mainlayout.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -13,6 +11,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { UsersComponent } from './components/users/users.component';
 import { GooeynavComponent } from './components/gooeynav/gooeynav.component';
+import { QuickRefComponent } from './components/quickref/quickref.component';
 
 @NgModule({
     declarations: [
@@ -24,14 +23,9 @@ import { GooeynavComponent } from './components/gooeynav/gooeynav.component';
         ActionsComponent,
         UsersComponent,
         GooeynavComponent,
+        QuickRefComponent,
     ],
-    imports: [
-        CommonModule,
-        MaterialModule,
-        FormsModule,
-        ReactiveFormsModule,
-        BackendRoutingModule,
-    ],
+    imports: [SharedModule, BackendRoutingModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class BackendModule {}
