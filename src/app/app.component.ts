@@ -5,6 +5,7 @@ import { AuthService } from './services/auth.service';
 import { User } from './entities/user/user.entity';
 import { LogService } from './services/logger/log.service';
 import { UpdateService } from './services/update.service';
+import { SubscriptionService } from './services/subscription.service';
 
 @Component({
     selector: 'app-root',
@@ -25,7 +26,8 @@ export class AppComponent {
         private log: LogService,
         private settings: SettingsService,
         private authService: AuthService,
-        private updateService: UpdateService
+        private updateService: UpdateService,
+        private subscriptionService: SubscriptionService
     ) {
         this.settings.theme.subscribe((theme) => {
             this.theme = theme;

@@ -18,6 +18,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SharedModule } from './modules/shared/shared.module';
 import { UpdateService } from './services/update.service';
+import { SubscriptionService } from './services/subscription.service';
 @NgModule({
     declarations: [AppComponent, LoadingComponent],
     imports: [
@@ -44,6 +45,7 @@ import { UpdateService } from './services/update.service';
         },
         CookieService,
         UpdateService,
+        SubscriptionService,
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
