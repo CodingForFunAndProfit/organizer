@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { GraphqlModule } from './modules/graphql/graphql.module';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { RequestLoaderService } from './services/request-loader.service';
 import { RequestInterceptor } from './interceptors/request.interceptor';
@@ -17,14 +16,17 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CookieService } from 'ngx-cookie-service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SharedModule } from './modules/shared/shared.module';
+import { UpdateService } from './services/update.service';
+import { SubscriptionService } from './services/subscription.service';
 @NgModule({
     declarations: [AppComponent, LoadingComponent],
     imports: [
+        SharedModule,
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        FlexLayoutModule,
         GraphqlModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
@@ -42,6 +44,8 @@ import { environment } from '../environments/environment';
             multi: true,
         },
         CookieService,
+        UpdateService,
+        SubscriptionService,
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],

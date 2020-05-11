@@ -9,8 +9,10 @@ import { ProgressComponent } from './modules/shared/components/progress/progress
 import { SidenavigationComponent } from './shared/common/sidenavigation/sidenavigation.component';
 import { ApolloTestingModule } from 'apollo-angular/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SwUpdate, ServiceWorkerModule } from '@angular/service-worker';
 
 describe('AppComponent', () => {
+    let service: SwUpdate;
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -19,13 +21,12 @@ describe('AppComponent', () => {
                 BrowserAnimationsModule,
                 MaterialModule,
                 HttpClientTestingModule,
+                ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
             ],
-            declarations: [
-                AppComponent,
-                ProgressComponent,
-                SidenavigationComponent,
-            ],
+            declarations: [AppComponent, ProgressComponent, SidenavigationComponent],
+            providers: [SwUpdate],
         }).compileComponents();
+        service = TestBed.inject(SwUpdate);
     }));
 
     it('should create the app', () => {

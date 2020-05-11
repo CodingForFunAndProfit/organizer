@@ -44,3 +44,4 @@ testem.log
 temp.txt
 
 src/assets/icons/Thumbs.db
+vapidkeys.json
