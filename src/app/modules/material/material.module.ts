@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 
+// import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,6 +21,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
     exports: [
@@ -44,6 +47,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         MatMenuModule,
         MatAutocompleteModule,
         MatSnackBarModule,
+        MatDatepickerModule,
+        MatMomentDateModule,
     ],
 })
 export class MaterialModule {}

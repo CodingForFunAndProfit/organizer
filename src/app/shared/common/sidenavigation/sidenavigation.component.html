@@ -1,8 +1,11 @@
 <mat-nav-list>
-    <a mat-list-item routerLink="/quickref" routerLinkActive="active-link" class="sidenavi"><mat-icon>help</mat-icon>QuickRef</a>
+    <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" class="sidenavi"><mat-icon>home</mat-icon>Dashboard</a>
     <mat-divider></mat-divider>
 
-    <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link" class="sidenavi"><mat-icon>home</mat-icon>Dashboard</a>
+    <a mat-list-item routerLink="/budget" routerLinkActive="active-link" class="sidenavi"><mat-icon>attach_money</mat-icon>Budget</a>
+    <mat-divider></mat-divider>
+
+    <a mat-list-item routerLink="/quickref" routerLinkActive="active-link" class="sidenavi"><mat-icon>help</mat-icon>QuickRef</a>
     <mat-divider></mat-divider>
     <!--
     <a mat-list-item routerLink="/actions" routerLinkActive="active-link" class="sidenavi" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>list_alt</mat-icon>Actions</a>
@@ -10,6 +13,7 @@
     -->
     <a mat-list-item routerLink="/settings" routerLinkActive="active-link" class="sidenavi"><mat-icon>settings</mat-icon>Settings</a>
     <mat-divider></mat-divider>
+
     <h2>Admin</h2>
     <a mat-list-item routerLink="/users" routerLinkActive="active-link" class="sidenavi"><mat-icon>supervisor_account</mat-icon>Users</a>
 </mat-nav-list>

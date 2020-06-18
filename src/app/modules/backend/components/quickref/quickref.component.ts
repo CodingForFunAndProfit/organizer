@@ -23,6 +23,17 @@ export class QuickRefComponent implements OnInit {
         this.form = this.formBuilder.group({
             search: this.search,
         });
+
+        /*
+        this.qickref.
+        this.qickref.getAll().subscribe(
+            (data) => {
+                console.log('got data', data);
+            },
+            (error) => {
+                console.log('there was an error', error);
+            }
+        );
         this.refs = [
             new Ref({ id: '0', title: 'git checkout -b <branchname> master ' }),
             new Ref({ id: '1', title: 'git add .' }),
@@ -31,6 +42,7 @@ export class QuickRefComponent implements OnInit {
             new Ref({ id: '4', title: 'git checkout master' }),
             new Ref({ id: '5', title: 'git clone <repourl>' }),
         ];
+        */
     }
 
     ngOnInit(): void {

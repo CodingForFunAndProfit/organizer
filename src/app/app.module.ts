@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { SharedModule } from './modules/shared/shared.module';
 import { UpdateService } from './services/update.service';
 import { SubscriptionService } from './services/subscription.service';
+
 @NgModule({
     declarations: [AppComponent, LoadingComponent],
     imports: [
@@ -44,10 +45,10 @@ import { SubscriptionService } from './services/subscription.service';
             multi: true,
         },
         CookieService,
-        UpdateService,
-        SubscriptionService,
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule {
+    constructor(private updateService: UpdateService, private subscriptionService: SubscriptionService) {}
+}

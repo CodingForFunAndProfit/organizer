@@ -5,10 +5,12 @@ import { ActionsComponent } from './components/actions/actions.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { UsersComponent } from './components/users/users.component';
 import { QuickRefComponent } from './components/quickref/quickref.component';
+import { BudgetComponent } from './components/budget/budget.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'dashboard' },
     { path: 'dashboard', component: DashboardComponent },
+    { path: 'budget', component: BudgetComponent },
     { path: 'actions', component: ActionsComponent },
     { path: 'quickref', component: QuickRefComponent },
     { path: 'settings', component: SettingsComponent },

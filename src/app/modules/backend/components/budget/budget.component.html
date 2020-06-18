@@ -1,0 +1,18 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Budget</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <p>List of Bugets or tabs (usually ust one budget)</p>
+        <mat-list>
+            <mat-list-item *ngFor="let budget of budgets">
+                <div>{{ budget.title }}</div>
+            </mat-list-item>
+        </mat-list>
+        <p>List of accounts of selected Budget with value</p>
+        <p>Add Transaction Formcontrols</p>
+
+        <p>List of Transactions</p>
+    </mat-card-content>
+</mat-card>

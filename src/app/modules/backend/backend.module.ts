@@ -12,6 +12,8 @@ import { ActionsComponent } from './components/actions/actions.component';
 import { UsersComponent } from './components/users/users.component';
 import { GooeynavComponent } from './components/gooeynav/gooeynav.component';
 import { QuickRefComponent } from './components/quickref/quickref.component';
+import { BudgetComponent } from './components/budget/budget.component';
+import { WeighttrackerComponent } from './components/weighttracker/weighttracker.component';
 
 @NgModule({
     declarations: [
@@ -24,6 +26,8 @@ import { QuickRefComponent } from './components/quickref/quickref.component';
         UsersComponent,
         GooeynavComponent,
         QuickRefComponent,
+        BudgetComponent,
+        WeighttrackerComponent,
     ],
     imports: [SharedModule, BackendRoutingModule],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
