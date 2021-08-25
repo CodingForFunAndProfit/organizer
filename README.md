@@ -1,6 +1,6 @@
 # Organizer
 
-[![build status](https://github.com/CodingForFunAndProfit/Organizer/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/CodingForFunAndProfit/Organizer/actions)
+[![build status](https://github.com/CodingForFunAndProfit/organizer/workflows/Build%20and%20Deploy/badge.svg)](https://github.com/CodingForFunAndProfit/organizer/actions)
 
 ## Technologies
 
